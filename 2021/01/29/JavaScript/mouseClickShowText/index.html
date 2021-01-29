@@ -35,30 +35,35 @@
     var CONFIG = {"hostname":"wsz987.githyb.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Hello,here is wsz987&#39;s blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wsz987">
-<meta property="og:url" content="http://wsz987.githyb.io/index.html">
+  <meta name="description" content="Hexo next主题添加鼠标点击特效 JS代码转载至 原生js实现鼠标点击出现文字特效（颜色随机）！  内容仅作学习!  文字底部版权不知道怎么关掉,望见谅……   此篇为转载 + 本人笔记性质  themes\next\layout\_layout.swig   或 中添加  1&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="纯JS鼠标点击显示文字特效">
+<meta property="og:url" content="http://wsz987.githyb.io/2021/01/29/JavaScript/mouseClickShowText/index.html">
 <meta property="og:site_name" content="wsz987">
-<meta property="og:description" content="Hello,here is wsz987&#39;s blog.">
+<meta property="og:description" content="Hexo next主题添加鼠标点击特效 JS代码转载至 原生js实现鼠标点击出现文字特效（颜色随机）！  内容仅作学习!  文字底部版权不知道怎么关掉,望见谅……   此篇为转载 + 本人笔记性质  themes\next\layout\_layout.swig   或 中添加  1&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-29T10:18:26.000Z">
+<meta property="article:modified_time" content="2021-01-29T15:23:16.648Z">
 <meta property="article:author" content="wsz987">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="特效">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wsz987.githyb.io/">
+<link rel="canonical" href="http://wsz987.githyb.io/2021/01/29/JavaScript/mouseClickShowText/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>wsz987</title>
+  <title>纯JS鼠标点击显示文字特效 | wsz987</title>
   
 
 
@@ -201,9 +206,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -219,10 +225,9 @@
       <meta itemprop="name" content="wsz987">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/JavaScript/mouseClickShowText/" class="post-title-link" itemprop="url">纯JS鼠标点击显示文字特效</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          纯JS鼠标点击显示文字特效<a href="https://github.com/wsz987/wsz987.github.io/2021/01/29_posts/JavaScript/mouseClickShowText.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil-alt"></i></a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -255,7 +260,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Hexo-next主题添加鼠标点击特效"><a href="#Hexo-next主题添加鼠标点击特效" class="headerlink" title="Hexo next主题添加鼠标点击特效"></a>Hexo next主题添加鼠标点击特效</h4><blockquote>
+        <h4 id="Hexo-next主题添加鼠标点击特效"><a href="#Hexo-next主题添加鼠标点击特效" class="headerlink" title="Hexo next主题添加鼠标点击特效"></a>Hexo next主题添加鼠标点击特效</h4><blockquote>
 <p>JS代码转载至 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weilongjj/article/details/101039813">原生js实现鼠标点击出现文字特效（颜色随机）！</a> </p>
 <p><em>内容仅作学习!  文字底部版权不知道怎么关掉,望见谅……   此篇为转载 + 本人笔记性质</em></p>
 <blockquote>
@@ -267,357 +272,40 @@
 <p><em>原代码并未添加闭包  本人建议且已添加闭包~~</em></p>
 </blockquote>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/JavaScript/mouseClickShowText/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//定义点击出现文字类</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">ClickFrontShow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">//定义所需文字和颜色</span></span><br><span class="line">			<span class="built_in">this</span>.fron = [ <span class="string">&#x27;❤&#x27;</span>, <span class="string">&quot;富强&quot;</span>, <span class="string">&quot;民主&quot;</span>, <span class="string">&quot;文明&quot;</span>, <span class="string">&quot;和谐&quot;</span>, <span class="string">&quot;自由&quot;</span>, <span class="string">&quot;平等&quot;</span>, <span class="string">&quot;公正&quot;</span>, <span class="string">&quot;法治&quot;</span>, <span class="string">&quot;爱国&quot;</span>, <span class="string">&quot;敬业&quot;</span>, <span class="string">&quot;诚信&quot;</span>, <span class="string">&quot;友善&quot;</span>];</span><br><span class="line">			<span class="built_in">this</span>.colo = [<span class="string">&#x27;#FF69B4&#x27;</span>, <span class="string">&#x27;#ff6651&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>, <span class="string">&#x27;#FF00FF&#x27;</span>, <span class="string">&#x27;#00FF7F&#x27;</span>, <span class="string">&#x27;#00BFFF&#x27;</span>, <span class="string">&#x27;#BA55D3&#x27;</span>];</span><br><span class="line">			<span class="comment">//获取body元素</span></span><br><span class="line">			<span class="built_in">this</span>.elBody = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;body&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">			<span class="comment">//初始化randomNum</span></span><br><span class="line">			<span class="built_in">this</span>.randomNum = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">//初始化字体inde</span></span><br><span class="line">			<span class="built_in">this</span>.finde = <span class="number">0</span>;</span><br><span class="line">			<span class="comment">//初始化className</span></span><br><span class="line">			<span class="built_in">this</span>.cls = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义初始化</span></span><br><span class="line">		ClickFrontShow.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params">frontArray, colorArray</span>) </span>&#123;</span><br><span class="line">			<span class="comment">//自定义颜色和字体</span></span><br><span class="line">			<span class="built_in">this</span>.fron = frontArray || <span class="built_in">this</span>.fron;</span><br><span class="line">			<span class="built_in">this</span>.colo = colorArray || <span class="built_in">this</span>.colo;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">this</span>.listenMouse();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建文字 </span></span><br><span class="line">		ClickFrontShow.prototype.createFront = <span class="function"><span class="keyword">function</span> (<span class="params">classname</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">			<span class="keyword">let</span> ospan = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">			<span class="comment">//设置样式</span></span><br><span class="line">			<span class="keyword">let</span> cssText = <span class="string">&quot;position:absolute; width: 40px; height: 20px; cursor: default; transform: translate(-50%,-50%); font-weight: bold; opacity: 1; z-index: 1000; transition: 1s;&quot;</span>;</span><br><span class="line">			<span class="comment">//随机字体和颜色</span></span><br><span class="line">			<span class="keyword">let</span> randomFront = self.fron[self.finde];</span><br><span class="line">			<span class="keyword">let</span> randomColor = self.colo[<span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*(self.colo.length-<span class="number">1</span>))];</span><br><span class="line">			<span class="comment">//字体下标增1</span></span><br><span class="line">			self.finde = (self.finde+<span class="number">1</span>) % self.fron.length;</span><br><span class="line">			<span class="comment">//向body中添加元素</span></span><br><span class="line">			self.elBody.appendChild(ospan);</span><br><span class="line">			<span class="comment">//绑定一个classname</span></span><br><span class="line">			ospan.className = <span class="built_in">String</span>(classname);</span><br><span class="line">			<span class="comment">//添加样式</span></span><br><span class="line">			ospan.style.cssText = cssText + <span class="string">&quot;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;&quot;</span></span><br><span class="line">			ospan.style.color = randomColor;</span><br><span class="line">			ospan.innerHTML = randomFront;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//监听鼠标点击</span></span><br><span class="line">		ClickFrontShow.prototype.listenMouse = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">//鼠标点击事件</span></span><br><span class="line">			<span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">				<span class="comment">//避免classname值重复导致出现bug</span></span><br><span class="line">				<span class="keyword">if</span>(self.cls === <span class="number">20</span>)&#123;</span><br><span class="line">					self.cls = <span class="number">0</span>;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					self.cls += <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//创建文字</span></span><br><span class="line">				self.createFront(self.cls);</span><br><span class="line">				<span class="keyword">let</span> el = <span class="built_in">document</span>.getElementsByClassName(self.cls)[<span class="number">0</span>];</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//鼠标点击位置</span></span><br><span class="line">				el.style.left = e.clientX + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				el.style.top = e.clientY + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//过时改变</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					el.style.opacity = <span class="number">0</span>;</span><br><span class="line">					el.style.top = el.offsetTop - <span class="number">100</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				&#125;, <span class="number">100</span>);</span><br><span class="line">				<span class="comment">//过时清除</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					self.elBody.removeChild(el);</span><br><span class="line">				&#125;, <span class="number">2000</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//实例化</span></span><br><span class="line">		<span class="keyword">var</span> frontShow = <span class="keyword">new</span> ClickFrontShow();</span><br><span class="line">		<span class="comment">//用户可在此传递参数，默认第一个参数是字体数组；</span></span><br><span class="line">		<span class="comment">//第二个参数是颜色数组，必须是数组类型！</span></span><br><span class="line">		frontShow.init();</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+              <a href="/tags/%E7%89%B9%E6%95%88/" rel="tag"><i class="fa fa-tag"></i> 特效</a>
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/hexo/copyright/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/hexo/copyright/" class="post-title-link" itemprop="url">hexo 新版nest 文章版权启用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 10:18:26 / 修改时间：15:29:39" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前言: 网上找到的老版 版权开启方法不起作用</p>
-<p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
-<p>实际新版next内置了版权信息模块<br>有两种启用模式 效果不一</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/hexo/copyright/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/29/hexo/copyright/" rel="prev" title="hexo 新版nest 文章版权启用">
+      <i class="fa fa-chevron-left"></i> hexo 新版nest 文章版权启用
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/script/SteamBuff_Market-WalletBalance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/script/SteamBuff_Market-WalletBalance/" class="post-title-link" itemprop="url">饰品筛选倒余额脚本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 10:18:26 / 修改时间：13:13:25" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h5><blockquote>
-<p> <a target="_blank" rel="noopener" href="https://keylol.com/t577669-1-1">饰品筛选倒余额 (Keylol论坛)</a> </p>
-</blockquote>
-<h5 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h5><blockquote>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://buff.163.com/">Buff</a> </li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://www.igxe.cn/dota2/570?sort=3">igxe</a></li>
-<li><input disabled="" type="checkbox"> c5game<ul>
-<li><input checked="" disabled="" type="checkbox"> <a href="https//www.c5game.com/dota.html">dota</a></li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://www.c5game.com/csgo/default/result.html?sort=update_time">csgo</a></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/script/SteamBuff_Market-WalletBalance/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/steam-info/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/steam-info/" class="post-title-link" itemprop="url">Steam API Info</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 06:22:58 / 修改时间：15:16:29" itemprop="dateCreated datePublished" datetime="2021-01-29T06:22:58+00:00">2021-01-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/STEAM/" itemprop="url" rel="index"><span itemprop="name">STEAM</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="汇率接口"><a href="#汇率接口" class="headerlink" title="汇率接口"></a>汇率接口</h4><p><a target="_blank" rel="noopener" href="https://esapi.isthereanydeal.com/v01/rates/?to=CNY">https://esapi.isthereanydeal.com/v01/rates/?to=CNY</a></p>
-<!--相对于 CNY 的倍率-->
-
-<table>
-<thead>
-<tr>
-<th align="center">result</th>
-<th align="center">data</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">success</td>
-<td align="center">Object</td>
-</tr>
-</tbody></table>
-<h4 id="游戏基本信息"><a href="#游戏基本信息" class="headerlink" title="游戏基本信息"></a>游戏基本信息</h4><p><a target="_blank" rel="noopener" href="https://store.steampowered.com/apphoverpublic/1366540?review_score_preference=0&amp;l=schinese&amp;pagev6=true">https://store.steampowered.com/apphoverpublic/1366540?review_score_preference=0&amp;l=schinese&amp;pagev6=true</a></p>
-<!--XML-->
-
-<ol>
-<li>游戏名称</li>
-<li>发行日期</li>
-<li>总评测信息</li>
-<li>游戏标签</li>
-<li>商店展示截图URL</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/steam-info/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 01:37:35 / 修改时间：08:36:20" itemprop="dateCreated datePublished" datetime="2021-01-29T01:37:35+00:00">2021-01-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -668,6 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">Hexo next主题添加鼠标点击特效</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
