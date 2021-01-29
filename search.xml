@@ -15,6 +15,108 @@
 ]]></content>
   </entry>
   <entry>
+    <title>饰品筛选倒余额脚本</title>
+    <url>/2021/01/29/script/SteamBuff_Market-WalletBalance/</url>
+    <content><![CDATA[<h5 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h5><blockquote>
+<p> <a href="https://keylol.com/t577669-1-1">饰品筛选倒余额 (Keylol论坛)</a> </p>
+</blockquote>
+<h5 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h5><blockquote>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <a href="https://buff.163.com/">Buff</a> </li>
+<li><input checked="" disabled="" type="checkbox"> <a href="https://www.igxe.cn/dota2/570?sort=3">igxe</a></li>
+<li><input disabled="" type="checkbox"> c5game<ul>
+<li><input checked="" disabled="" type="checkbox"> <a href="https//www.c5game.com/dota.html">dota</a></li>
+<li><input checked="" disabled="" type="checkbox"> <a href="https://www.c5game.com/csgo/default/result.html?sort=update_time">csgo</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+
+<h5 id="技术描述"><a href="#技术描述" class="headerlink" title="技术描述"></a>技术描述</h5><blockquote>
+<p>面板模块采用 <code>Vue</code> 实现数据交互 </p>
+<p>筛选机制由 <code>JQury</code> 实现 <code>DOM</code> 操作 及动态组件加载</p>
+<p><code>ES6</code> 使用 <code>let</code> , <code>const</code> , <code>includes</code> , <code>new Promise()</code> , <code>Array.from().filter(()=&gt;&#123;&#125;)</code> , <code>async-await</code>/<code>then()</code> <strong>等</strong></p>
+<p><code>Bootstrap4</code> 相关 <code>CSS</code> 引用 <strong>微调</strong>兼容各网站页面样式</p>
+<p>接收键盘指令<code>Keyboard</code> 自动筛选</p>
+</blockquote>
+<blockquote>
+<p>兼容 <code>Edge</code> <code>Chrome</code> <code>Firefox(略丑)</code></p>
+<ul>
+<li><a href="https://www.igxe.cn/dota2/570?sort=3">igxe</a>有显示BUG</li>
+<li>c5game由于页面地址混乱只适配<a href="https://www.c5game.com/dota.html">dota</a>/<a href="https://www.c5game.com/csgo/default/result.html?sort=update_time">csgo</a></li>
+</ul>
+</blockquote>
+<h5 id="脚本使用"><a href="#脚本使用" class="headerlink" title="脚本使用"></a>脚本使用</h5><blockquote>
+<ul>
+<li>脚本基于 <a href="http://www.tampermonkey.net/">Tampermonkey 油猴</a></li>
+<li><strong>使用前需要安装</strong> <a href="https://keylol.com/suid-451341">@AFKOUT</a> 老哥的 <a href="https://greasyfork.org/zh-CN/scripts/35597-%E9%A5%B0%E5%93%81%E6%AF%94%E4%BE%8B%E8%AE%A1%E7%AE%97%E8%84%9A%E6%9C%AC">饰品比例计算脚本</a>         ⇦他的 <a href="https://keylol.com/t331397-1-1">帖子 / 反馈</a></li>
+<li>我的脚本 <a href="https://greasyfork.org/zh-CN/scripts/399176-%E9%A5%B0%E5%93%81%E7%AD%9B%E9%80%89%E5%80%92%E4%BD%99%E9%A2%9D-%E6%AF%94%E4%BE%8B%E8%87%AA%E5%AE%9A%E4%B9%89-%E6%94%AF%E6%8C%81buff-c5game-igxe">饰品筛选倒余额脚本</a></li>
+</ul>
+</blockquote>
+<h5 id="键盘指令-Keyboard"><a href="#键盘指令-Keyboard" class="headerlink" title="键盘指令  Keyboard"></a><strong>键盘指令</strong>  <code>Keyboard</code></h5><blockquote>
+<p><code>A</code>  上一页<br><code>S</code>  居中且过滤<br><code>D</code>  下一页<br><code>W</code>  居中<br><code>E</code> 过滤后全部打开  <strong>需要浏览器弹窗权限</strong></p>
+</blockquote>
+<h5 id="疑惑解答"><a href="#疑惑解答" class="headerlink" title="* 疑惑解答 *"></a><strong>* 疑惑解答 *</strong></h5><blockquote>
+<p>为什么网页打开几秒后总是自动关闭</p>
+<ul>
+<li>因为筛选的饰品余额比例过高</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>为什么按E/D会无限下一页</p>
+<ul>
+<li>因为我设置了定时呀!页面没有不符合条件的饰品就下一页,直到找到嘿嘿!不然会累计到1000个被筛选触发浏览器机制停止</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>为什么一次性打开多个页面后不符合条件的饰品不会自动关闭 </p>
+<ul>
+<li>你的网速过慢导致比例脚本数据加载过慢 筛选脚本验证超时 请给脚本设置适合自己网络的验证参数 <code>延迟筛选时间&amp;校验</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>为什么按E后只能打开一个网页</p>
+<ul>
+<li>请给网页设置弹窗权限(浏览器安全问题)  第一次使用 <code>E</code> 浏览器会提示</li>
+<li>选择第一个允许<br><img src="https://blob.keylol.com/forum/202005/31/213133u0i9666ff76g9ddg.png" alt="选择允许"></li>
+</ul>
+</blockquote>
+<h5 id="筛选机制"><a href="#筛选机制" class="headerlink" title="筛选机制"></a><strong>筛选机制</strong></h5><blockquote>
+<ul>
+<li><p>最低在售数量  &gt;<em>避免冷门饰品</em></p>
+</li>
+<li><p>理想比例  &gt;<em>当前市场最低出售价比例</em></p>
+</li>
+<li><p>最高比例  &gt;<em>当前市场最高收购价比例</em></p>
+</li>
+<li><p>理想比例 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;不符合要求 &gt;*筛选* 不超过最高比例</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 符合要求  &gt;*筛选* 不超过最高比例 (避免JS抬价造成虚假比例)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a><strong>效果</strong></h5><!--鼠标移到面板可以查看详细内容-->
+
+<ul>
+<li><img src="https://blob.keylol.com/forum/202008/12/232150n1kr7z75y7uzt7z1.png" alt="面板"></li>
+<li><img src="https://blob.keylol.com/forum/202008/12/232200xi4oom9oasnzxm9n.png" alt="面板1"></li>
+<li><img src="https://blob.keylol.com/forum/202008/12/232203m02948stksc20ajw.png" alt="面板2"></li>
+<li><img src="https://blob.keylol.com/forum/202008/12/231520h44u99bjb9rrijqy.png" alt="Buff中的效果"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>脚本</category>
+      </categories>
+      <tags>
+        <tag>STEAM</tag>
+        <tag>脚本</tag>
+        <tag>Tampermonkey</tag>
+        <tag>Buff</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Steam API Info</title>
     <url>/2021/01/29/steam-info/</url>
     <content><![CDATA[<h4 id="汇率接口"><a href="#汇率接口" class="headerlink" title="汇率接口"></a>汇率接口</h4><p><a href="https://esapi.isthereanydeal.com/v01/rates/?to=CNY">https://esapi.isthereanydeal.com/v01/rates/?to=CNY</a></p>
@@ -42,6 +144,8 @@
 <li>游戏标签</li>
 <li>商店展示截图URL</li>
 </ol>
+<a id="more"></a> 
+
 <h4 id="捆绑包信息"><a href="#捆绑包信息" class="headerlink" title="捆绑包信息"></a>捆绑包信息</h4><p><a href="https://store.steampowered.com/bundle/18623/hover_public/?review_score_preference=0&amp;l=schinese&amp;pagev6=true">https://store.steampowered.com/bundle/18623/hover_public/?review_score_preference=0&amp;l=schinese&amp;pagev6=true</a></p>
 <!--XML-->
 
