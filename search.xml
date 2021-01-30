@@ -43,7 +43,45 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo 新版nest 文章版权启用</title>
+    <title>hexo next 引入 2Dlive 博客板娘</title>
+    <url>/2021/01/30/hexo/2Dlive/</url>
+    <content><![CDATA[<h4 id="2Dlive-博客板娘"><a href="#2Dlive-博客板娘" class="headerlink" title="2Dlive 博客板娘"></a>2Dlive 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
+<ol>
+<li><p>最简单CDN导入(功能限制太多)</p>
+<blockquote>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>本地配置 (功能齐全)</p>
+</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
+<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
+<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
+<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
+<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+<script src="/live2d-widget/autoload.js"></script>
+
+<p>即可 预览效果</p>
+<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
+<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>板娘</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo 新版next 文章版权启用</title>
     <url>/2021/01/29/hexo/copyright/</url>
     <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
 <p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
