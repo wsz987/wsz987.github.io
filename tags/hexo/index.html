@@ -372,6 +372,9 @@
       <span class="links-of-author-item">
         <a href="https://greasyfork.org/zh-CN/users/448262" title="Greasyfork → https:&#x2F;&#x2F;greasyfork.org&#x2F;zh-CN&#x2F;users&#x2F;448262" rel="noopener" target="_blank"><i class="fab fa-glide fa-fw"></i>Greasyfork</a>
       </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/309609177" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;309609177" rel="noopener" target="_blank"><i class="fab fa-blogger fa-fw"></i>Bilibili</a>
+      </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
@@ -479,6 +482,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'JKNXTVnrJ6Hxhn5kQ5ShT2R8-gzGzoHsz',
+      appKey     : 'mw19Hvm3BtYEjt4hojTJxIpi',
+      placeholder: "啊~这~还不搞事(〃￣︶￣)人(￣︶￣〃)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
