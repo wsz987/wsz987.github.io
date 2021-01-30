@@ -15,6 +15,34 @@
 ]]></content>
   </entry>
   <entry>
+    <title>纯JS鼠标点击显示文字特效</title>
+    <url>/2021/01/29/JavaScript/mouseClickShowText/</url>
+    <content><![CDATA[<h4 id="Hexo-next主题添加鼠标点击特效"><a href="#Hexo-next主题添加鼠标点击特效" class="headerlink" title="Hexo next主题添加鼠标点击特效"></a>Hexo next主题添加鼠标点击特效</h4><blockquote>
+<p>JS代码转载至 <a href="https://blog.csdn.net/weilongjj/article/details/101039813">原生js实现鼠标点击出现文字特效（颜色随机）！</a> </p>
+<p><em>内容仅作学习!  文字底部版权不知道怎么关掉,望见谅……   此篇为转载 + 本人笔记性质</em></p>
+<blockquote>
+<p><code>themes\next\layout\_layout.swig</code>  <head> 或 <body>中添加</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/click_show_text.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>themes\next\source\js</code> 下新建 <code>click_show_text.js</code>  添加如下: </p>
+<p><em>原代码并未添加闭包  本人建议且已添加闭包~~</em></p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//定义点击出现文字类</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">ClickFrontShow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">//定义所需文字和颜色</span></span><br><span class="line">			<span class="built_in">this</span>.fron = [ <span class="string">&#x27;❤&#x27;</span>, <span class="string">&quot;富强&quot;</span>, <span class="string">&quot;民主&quot;</span>, <span class="string">&quot;文明&quot;</span>, <span class="string">&quot;和谐&quot;</span>, <span class="string">&quot;自由&quot;</span>, <span class="string">&quot;平等&quot;</span>, <span class="string">&quot;公正&quot;</span>, <span class="string">&quot;法治&quot;</span>, <span class="string">&quot;爱国&quot;</span>, <span class="string">&quot;敬业&quot;</span>, <span class="string">&quot;诚信&quot;</span>, <span class="string">&quot;友善&quot;</span>];</span><br><span class="line">			<span class="built_in">this</span>.colo = [<span class="string">&#x27;#FF69B4&#x27;</span>, <span class="string">&#x27;#ff6651&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>, <span class="string">&#x27;#FF00FF&#x27;</span>, <span class="string">&#x27;#00FF7F&#x27;</span>, <span class="string">&#x27;#00BFFF&#x27;</span>, <span class="string">&#x27;#BA55D3&#x27;</span>];</span><br><span class="line">			<span class="comment">//获取body元素</span></span><br><span class="line">			<span class="built_in">this</span>.elBody = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;body&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">			<span class="comment">//初始化randomNum</span></span><br><span class="line">			<span class="built_in">this</span>.randomNum = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">//初始化字体inde</span></span><br><span class="line">			<span class="built_in">this</span>.finde = <span class="number">0</span>;</span><br><span class="line">			<span class="comment">//初始化className</span></span><br><span class="line">			<span class="built_in">this</span>.cls = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义初始化</span></span><br><span class="line">		ClickFrontShow.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params">frontArray, colorArray</span>) </span>&#123;</span><br><span class="line">			<span class="comment">//自定义颜色和字体</span></span><br><span class="line">			<span class="built_in">this</span>.fron = frontArray || <span class="built_in">this</span>.fron;</span><br><span class="line">			<span class="built_in">this</span>.colo = colorArray || <span class="built_in">this</span>.colo;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">this</span>.listenMouse();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建文字 </span></span><br><span class="line">		ClickFrontShow.prototype.createFront = <span class="function"><span class="keyword">function</span> (<span class="params">classname</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">			<span class="keyword">let</span> ospan = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">			<span class="comment">//设置样式</span></span><br><span class="line">			<span class="keyword">let</span> cssText = <span class="string">&quot;position:absolute; width: 40px; height: 20px; cursor: default; transform: translate(-50%,-50%); font-weight: bold; opacity: 1; z-index: 1000; transition: 1s;&quot;</span>;</span><br><span class="line">			<span class="comment">//随机字体和颜色</span></span><br><span class="line">			<span class="keyword">let</span> randomFront = self.fron[self.finde];</span><br><span class="line">			<span class="keyword">let</span> randomColor = self.colo[<span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*(self.colo.length-<span class="number">1</span>))];</span><br><span class="line">			<span class="comment">//字体下标增1</span></span><br><span class="line">			self.finde = (self.finde+<span class="number">1</span>) % self.fron.length;</span><br><span class="line">			<span class="comment">//向body中添加元素</span></span><br><span class="line">			self.elBody.appendChild(ospan);</span><br><span class="line">			<span class="comment">//绑定一个classname</span></span><br><span class="line">			ospan.className = <span class="built_in">String</span>(classname);</span><br><span class="line">			<span class="comment">//添加样式</span></span><br><span class="line">			ospan.style.cssText = cssText + <span class="string">&quot;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;&quot;</span></span><br><span class="line">			ospan.style.color = randomColor;</span><br><span class="line">			ospan.innerHTML = randomFront;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//监听鼠标点击</span></span><br><span class="line">		ClickFrontShow.prototype.listenMouse = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">//鼠标点击事件</span></span><br><span class="line">			<span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">				<span class="comment">//避免classname值重复导致出现bug</span></span><br><span class="line">				<span class="keyword">if</span>(self.cls === <span class="number">20</span>)&#123;</span><br><span class="line">					self.cls = <span class="number">0</span>;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					self.cls += <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//创建文字</span></span><br><span class="line">				self.createFront(self.cls);</span><br><span class="line">				<span class="keyword">let</span> el = <span class="built_in">document</span>.getElementsByClassName(self.cls)[<span class="number">0</span>];</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//鼠标点击位置</span></span><br><span class="line">				el.style.left = e.clientX + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				el.style.top = e.clientY + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//过时改变</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					el.style.opacity = <span class="number">0</span>;</span><br><span class="line">					el.style.top = el.offsetTop - <span class="number">100</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				&#125;, <span class="number">100</span>);</span><br><span class="line">				<span class="comment">//过时清除</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					self.elBody.removeChild(el);</span><br><span class="line">				&#125;, <span class="number">2000</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//实例化</span></span><br><span class="line">		<span class="keyword">var</span> frontShow = <span class="keyword">new</span> ClickFrontShow();</span><br><span class="line">		<span class="comment">//用户可在此传递参数，默认第一个参数是字体数组；</span></span><br><span class="line">		<span class="comment">//第二个参数是颜色数组，必须是数组类型！</span></span><br><span class="line">		frontShow.init();</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>特效</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo next 引入live2d 博客板娘</title>
     <url>/2021/01/30/hexo/2Dlive/</url>
     <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
@@ -50,80 +78,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>板娘</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo 新版next 文章版权启用</title>
-    <url>/2021/01/29/hexo/copyright/</url>
-    <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
-<p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
-<p>实际新版next内置了版权信息模块<br>有两种启用模式 效果不一</p>
-<a id="more"></a>
-
-<h5 id="方法一-全局开启"><a href="#方法一-全局开启" class="headerlink" title="方法一  全局开启"></a>方法一  全局开启</h5><blockquote>
-<p><code>themes\next\_config.yml</code>  下 <code>sidebar</code> 和  <code>post</code> 设置为true  </p>
-<blockquote>
-<p>sidebar为头像模块显示版权保护</p>
-<p>post 则为文章底部版权模块</p>
-</blockquote>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>themes\next\layout\_macro\post.swig</code>下搜索<code>creative_commons</code>可见</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>本人认知限制 一旦开启则为全局 无法单页面关闭  这样很不方便 </p>
-</blockquote>
-<h5 id="方法二-单页面灵活设置"><a href="#方法二-单页面灵活设置" class="headerlink" title="方法二 单页面灵活设置"></a>方法二 单页面灵活设置</h5><blockquote>
-<p>在上文</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>上或下区域 添加</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if page.copyright %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><del>回到<code>themes\next\layout\_macro\post.swig</code> 搜索 <code>copyright</code> 设置为</del>    (误解了  实际测试不需要设置 )</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">copyright:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>此后只需要在<code>*.md</code>文章开头添加</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo</span> <span class="string">新版nest</span> <span class="string">文章版权启用</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-01-29 10:18:26</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">nest</span> </span><br><span class="line"><span class="attr">tags:</span> [<span class="string">hexo</span>,<span class="string">copyright</span>]</span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>则实现文章底部灵活开启版权模块</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>copyright</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>纯JS鼠标点击显示文字特效</title>
-    <url>/2021/01/29/JavaScript/mouseClickShowText/</url>
-    <content><![CDATA[<h4 id="Hexo-next主题添加鼠标点击特效"><a href="#Hexo-next主题添加鼠标点击特效" class="headerlink" title="Hexo next主题添加鼠标点击特效"></a>Hexo next主题添加鼠标点击特效</h4><blockquote>
-<p>JS代码转载至 <a href="https://blog.csdn.net/weilongjj/article/details/101039813">原生js实现鼠标点击出现文字特效（颜色随机）！</a> </p>
-<p><em>内容仅作学习!  文字底部版权不知道怎么关掉,望见谅……   此篇为转载 + 本人笔记性质</em></p>
-<blockquote>
-<p><code>themes\next\layout\_layout.swig</code>  <head> 或 <body>中添加</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/click_show_text.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>themes\next\source\js</code> 下新建 <code>click_show_text.js</code>  添加如下: </p>
-<p><em>原代码并未添加闭包  本人建议且已添加闭包~~</em></p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//定义点击出现文字类</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">ClickFrontShow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">//定义所需文字和颜色</span></span><br><span class="line">			<span class="built_in">this</span>.fron = [ <span class="string">&#x27;❤&#x27;</span>, <span class="string">&quot;富强&quot;</span>, <span class="string">&quot;民主&quot;</span>, <span class="string">&quot;文明&quot;</span>, <span class="string">&quot;和谐&quot;</span>, <span class="string">&quot;自由&quot;</span>, <span class="string">&quot;平等&quot;</span>, <span class="string">&quot;公正&quot;</span>, <span class="string">&quot;法治&quot;</span>, <span class="string">&quot;爱国&quot;</span>, <span class="string">&quot;敬业&quot;</span>, <span class="string">&quot;诚信&quot;</span>, <span class="string">&quot;友善&quot;</span>];</span><br><span class="line">			<span class="built_in">this</span>.colo = [<span class="string">&#x27;#FF69B4&#x27;</span>, <span class="string">&#x27;#ff6651&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>, <span class="string">&#x27;#FF00FF&#x27;</span>, <span class="string">&#x27;#00FF7F&#x27;</span>, <span class="string">&#x27;#00BFFF&#x27;</span>, <span class="string">&#x27;#BA55D3&#x27;</span>];</span><br><span class="line">			<span class="comment">//获取body元素</span></span><br><span class="line">			<span class="built_in">this</span>.elBody = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;body&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">			<span class="comment">//初始化randomNum</span></span><br><span class="line">			<span class="built_in">this</span>.randomNum = <span class="literal">null</span>;</span><br><span class="line">			<span class="comment">//初始化字体inde</span></span><br><span class="line">			<span class="built_in">this</span>.finde = <span class="number">0</span>;</span><br><span class="line">			<span class="comment">//初始化className</span></span><br><span class="line">			<span class="built_in">this</span>.cls = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义初始化</span></span><br><span class="line">		ClickFrontShow.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params">frontArray, colorArray</span>) </span>&#123;</span><br><span class="line">			<span class="comment">//自定义颜色和字体</span></span><br><span class="line">			<span class="built_in">this</span>.fron = frontArray || <span class="built_in">this</span>.fron;</span><br><span class="line">			<span class="built_in">this</span>.colo = colorArray || <span class="built_in">this</span>.colo;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">this</span>.listenMouse();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建文字 </span></span><br><span class="line">		ClickFrontShow.prototype.createFront = <span class="function"><span class="keyword">function</span> (<span class="params">classname</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">			<span class="keyword">let</span> ospan = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">			<span class="comment">//设置样式</span></span><br><span class="line">			<span class="keyword">let</span> cssText = <span class="string">&quot;position:absolute; width: 40px; height: 20px; cursor: default; transform: translate(-50%,-50%); font-weight: bold; opacity: 1; z-index: 1000; transition: 1s;&quot;</span>;</span><br><span class="line">			<span class="comment">//随机字体和颜色</span></span><br><span class="line">			<span class="keyword">let</span> randomFront = self.fron[self.finde];</span><br><span class="line">			<span class="keyword">let</span> randomColor = self.colo[<span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*(self.colo.length-<span class="number">1</span>))];</span><br><span class="line">			<span class="comment">//字体下标增1</span></span><br><span class="line">			self.finde = (self.finde+<span class="number">1</span>) % self.fron.length;</span><br><span class="line">			<span class="comment">//向body中添加元素</span></span><br><span class="line">			self.elBody.appendChild(ospan);</span><br><span class="line">			<span class="comment">//绑定一个classname</span></span><br><span class="line">			ospan.className = <span class="built_in">String</span>(classname);</span><br><span class="line">			<span class="comment">//添加样式</span></span><br><span class="line">			ospan.style.cssText = cssText + <span class="string">&quot;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;&quot;</span></span><br><span class="line">			ospan.style.color = randomColor;</span><br><span class="line">			ospan.innerHTML = randomFront;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//监听鼠标点击</span></span><br><span class="line">		ClickFrontShow.prototype.listenMouse = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">//鼠标点击事件</span></span><br><span class="line">			<span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">				<span class="comment">//避免classname值重复导致出现bug</span></span><br><span class="line">				<span class="keyword">if</span>(self.cls === <span class="number">20</span>)&#123;</span><br><span class="line">					self.cls = <span class="number">0</span>;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					self.cls += <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//创建文字</span></span><br><span class="line">				self.createFront(self.cls);</span><br><span class="line">				<span class="keyword">let</span> el = <span class="built_in">document</span>.getElementsByClassName(self.cls)[<span class="number">0</span>];</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//鼠标点击位置</span></span><br><span class="line">				el.style.left = e.clientX + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				el.style.top = e.clientY + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//过时改变</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					el.style.opacity = <span class="number">0</span>;</span><br><span class="line">					el.style.top = el.offsetTop - <span class="number">100</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">				&#125;, <span class="number">100</span>);</span><br><span class="line">				<span class="comment">//过时清除</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					self.elBody.removeChild(el);</span><br><span class="line">				&#125;, <span class="number">2000</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//实例化</span></span><br><span class="line">		<span class="keyword">var</span> frontShow = <span class="keyword">new</span> ClickFrontShow();</span><br><span class="line">		<span class="comment">//用户可在此传递参数，默认第一个参数是字体数组；</span></span><br><span class="line">		<span class="comment">//第二个参数是颜色数组，必须是数组类型！</span></span><br><span class="line">		frontShow.init();</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-        <tag>特效</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -226,6 +180,52 @@
         <tag>脚本</tag>
         <tag>Tampermonkey</tag>
         <tag>Buff</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo 新版next 文章版权启用</title>
+    <url>/2021/01/29/hexo/copyright/</url>
+    <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
+<p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
+<p>实际新版next内置了版权信息模块<br>有两种启用模式 效果不一</p>
+<a id="more"></a>
+
+<h5 id="方法一-全局开启"><a href="#方法一-全局开启" class="headerlink" title="方法一  全局开启"></a>方法一  全局开启</h5><blockquote>
+<p><code>themes\next\_config.yml</code>  下 <code>sidebar</code> 和  <code>post</code> 设置为true  </p>
+<blockquote>
+<p>sidebar为头像模块显示版权保护</p>
+<p>post 则为文章底部版权模块</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>themes\next\layout\_macro\post.swig</code>下搜索<code>creative_commons</code>可见</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>本人认知限制 一旦开启则为全局 无法单页面关闭  这样很不方便 </p>
+</blockquote>
+<h5 id="方法二-单页面灵活设置"><a href="#方法二-单页面灵活设置" class="headerlink" title="方法二 单页面灵活设置"></a>方法二 单页面灵活设置</h5><blockquote>
+<p>在上文</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上或下区域 添加</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if page.copyright %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><del>回到<code>themes\next\layout\_macro\post.swig</code> 搜索 <code>copyright</code> 设置为</del>    (误解了  实际测试不需要设置 )</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">copyright:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>此后只需要在<code>*.md</code>文章开头添加</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo</span> <span class="string">新版nest</span> <span class="string">文章版权启用</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-01-29 10:18:26</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">nest</span> </span><br><span class="line"><span class="attr">tags:</span> [<span class="string">hexo</span>,<span class="string">copyright</span>]</span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>则实现文章底部灵活开启版权模块</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>copyright</tag>
       </tags>
   </entry>
   <entry>
