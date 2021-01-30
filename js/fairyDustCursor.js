@@ -89,7 +89,7 @@
         
         this.position = {x: x - 10, y: y - 20};
         this.initialStyles.color = color;
-        console.log(color);
+        // console.log(color);
   
         this.element = document.createElement('span');
         this.element.innerHTML = this.character;
@@ -114,7 +114,7 @@
     }
     
     function applyProperties( target, properties ) {
-      for( var key in properties ) {
+      for( let key in properties ) {
         target.style[ key ] = properties[ key ];
       }
     }
