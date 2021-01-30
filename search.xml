@@ -15,6 +15,29 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Node基础及跨域配置</title>
+    <url>/2021/01/30/node/Node-Allow-Origin/</url>
+    <content><![CDATA[<h4 id="Express-导入"><a href="#Express-导入" class="headerlink" title="Express 导入"></a>Express 导入</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="跨域配置"><a href="#跨域配置" class="headerlink" title="跨域配置"></a>跨域配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.all(<span class="string">&#x27;*&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const register = <span class="built_in">require</span>(<span class="string">&#x27;./api/register&#x27;</span>);</span><br><span class="line">const login = <span class="built_in">require</span>(<span class="string">&#x27;./api/login&#x27;</span>);</span><br><span class="line">const getValue = <span class="built_in">require</span>(<span class="string">&#x27;./api/getValue&#x27;</span>);</span><br><span class="line">app.post(<span class="string">&#x27;/user/regist&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> register(req, res));</span><br><span class="line">app.post(<span class="string">&#x27;/user/login&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> login(req, res));</span><br><span class="line">app.get(<span class="string">&#x27;/getValue&#x27;</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span> getValue(req,res));</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = <span class="number">81</span></span><br><span class="line">app.listen(port, hostName, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node-MQTT-WebSocket</title>
+    <url>/2021/01/30/node/Node-MQTT-WebSocket/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>纯JS鼠标点击显示文字特效</title>
     <url>/2021/01/29/JavaScript/mouseClickShowText/</url>
     <content><![CDATA[<h4 id="Hexo-next主题添加鼠标点击特效"><a href="#Hexo-next主题添加鼠标点击特效" class="headerlink" title="Hexo next主题添加鼠标点击特效"></a>Hexo next主题添加鼠标点击特效</h4><blockquote>
@@ -43,41 +66,71 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo next 引入live2d 博客板娘</title>
-    <url>/2021/01/30/hexo/2Dlive/</url>
-    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
-<ol>
-<li><p>最简单CDN导入(功能限制太多)</p>
+    <title>Node MySQL配置及登录注册接口实例</title>
+    <url>/2021/01/30/node/Node-MySQL/</url>
+    <content><![CDATA[<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
 </blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-</li>
-<li><p>本地配置 (功能齐全)</p>
-</li>
-</ol>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
-<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
-<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
-<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
-<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
-<script src="/live2d-widget/autoload.js"></script>
 
-<p>即可 预览效果</p>
-<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
-<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="login-js"><a href="#login-js" class="headerlink" title="login.js"></a>login.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;login -&gt; param&quot;</span>, param)</span><br><span class="line">    <span class="keyword">let</span> username = param.username;</span><br><span class="line">    <span class="keyword">let</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查询数据库中是否有用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有用户名，查询密码是否相同</span></span><br><span class="line">                <span class="keyword">if</span>(password == results[<span class="number">0</span>].password)&#123;</span><br><span class="line">                    <span class="comment">//3、密码相同则登陆成功</span></span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;登陆成功&#x27;</span>,<span class="number">200</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，密码错误&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，没有此用户名&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，用户名或密码不能为空&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = login;</span><br></pre></td></tr></table></figure>
+<h4 id="register-js"><a href="#register-js" class="headerlink" title="register.js"></a>register.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> param = req.body;</span><br><span class="line">    <span class="keyword">const</span> username = param.username;</span><br><span class="line">    <span class="keyword">const</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查看数据库中是否有相同用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有相同用户名，则注册失败，用户名重复</span></span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名重复&#x27;</span>,<span class="number">422</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(<span class="string">&quot;INSERT INTO user(username,password) VALUES(?,?)&quot;</span>, [username,password],<span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">                    <span class="comment">//3、如果没有相同用户名，并且有一条记录，则注册成功</span></span><br><span class="line">                    <span class="keyword">if</span>(results.affectedRows==<span class="number">1</span>)&#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;注册成功&#x27;</span>,<span class="number">201</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名、密码不能为空&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = register;</span><br></pre></td></tr></table></figure>
+<h4 id="response-js-封装"><a href="#response-js-封装" class="headerlink" title="response.js 封装"></a>response.js 封装</h4><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(success,msg,code,result)&#123;</span><br><span class="line">       <span class="keyword">this</span>.success = success;</span><br><span class="line">       <span class="keyword">this</span>.msg = msg;</span><br><span class="line">       <span class="keyword">this</span>.code = code;</span><br><span class="line">       <span class="keyword">this</span>.result = result;</span><br><span class="line">       <span class="keyword">this</span>.<span class="keyword">data</span>=<span class="string">&#x27;666&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Response;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo 新版next 文章版权启用</title>
+    <url>/2021/01/29/hexo/copyright/</url>
+    <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
+<p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
+<p>实际新版next内置了版权信息模块<br>有两种启用模式 效果不一</p>
+<a id="more"></a>
+
+<h5 id="方法一-全局开启"><a href="#方法一-全局开启" class="headerlink" title="方法一  全局开启"></a>方法一  全局开启</h5><blockquote>
+<p><code>themes\next\_config.yml</code>  下 <code>sidebar</code> 和  <code>post</code> 设置为true  </p>
+<blockquote>
+<p>sidebar为头像模块显示版权保护</p>
+<p>post 则为文章底部版权模块</p>
+</blockquote>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>themes\next\layout\_macro\post.swig</code>下搜索<code>creative_commons</code>可见</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>本人认知限制 一旦开启则为全局 无法单页面关闭  这样很不方便 </p>
+</blockquote>
+<h5 id="方法二-单页面灵活设置"><a href="#方法二-单页面灵活设置" class="headerlink" title="方法二 单页面灵活设置"></a>方法二 单页面灵活设置</h5><blockquote>
+<p>在上文</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上或下区域 添加</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if page.copyright %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><del>回到<code>themes\next\layout\_macro\post.swig</code> 搜索 <code>copyright</code> 设置为</del>    (误解了  实际测试不需要设置 )</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">copyright:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>此后只需要在<code>*.md</code>文章开头添加</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo</span> <span class="string">新版nest</span> <span class="string">文章版权启用</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-01-29 10:18:26</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">nest</span> </span><br><span class="line"><span class="attr">tags:</span> [<span class="string">hexo</span>,<span class="string">copyright</span>]</span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>则实现文章底部灵活开启版权模块</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>hexo</category>
       </categories>
       <tags>
         <tag>hexo</tag>
-        <tag>板娘</tag>
+        <tag>copyright</tag>
       </tags>
   </entry>
   <entry>
@@ -183,52 +236,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo 新版next 文章版权启用</title>
-    <url>/2021/01/29/hexo/copyright/</url>
-    <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
-<p><code>themes\next\layout\_macro\post.swig</code> / 文章开头 设置 <code>copyright: true </code> 不起作用</p>
-<p>实际新版next内置了版权信息模块<br>有两种启用模式 效果不一</p>
-<a id="more"></a>
-
-<h5 id="方法一-全局开启"><a href="#方法一-全局开启" class="headerlink" title="方法一  全局开启"></a>方法一  全局开启</h5><blockquote>
-<p><code>themes\next\_config.yml</code>  下 <code>sidebar</code> 和  <code>post</code> 设置为true  </p>
-<blockquote>
-<p>sidebar为头像模块显示版权保护</p>
-<p>post 则为文章底部版权模块</p>
-</blockquote>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>themes\next\layout\_macro\post.swig</code>下搜索<code>creative_commons</code>可见</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>本人认知限制 一旦开启则为全局 无法单页面关闭  这样很不方便 </p>
-</blockquote>
-<h5 id="方法二-单页面灵活设置"><a href="#方法二-单页面灵活设置" class="headerlink" title="方法二 单页面灵活设置"></a>方法二 单页面灵活设置</h5><blockquote>
-<p>在上文</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if theme.creative_commons.license and theme.creative_commons.post %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>上或下区域 添加</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml">&#123;%- if page.copyright %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name"><span class="builtin-name">partial</span></span>(<span class="name">&#x27;_partials/post/post-copyright.swig&#x27;</span>) &#125;&#125;</span></span><br><span class="line"><span class="xml">&#123;%- endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><del>回到<code>themes\next\layout\_macro\post.swig</code> 搜索 <code>copyright</code> 设置为</del>    (误解了  实际测试不需要设置 )</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">copyright:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>此后只需要在<code>*.md</code>文章开头添加</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo</span> <span class="string">新版nest</span> <span class="string">文章版权启用</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-01-29 10:18:26</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">nest</span> </span><br><span class="line"><span class="attr">tags:</span> [<span class="string">hexo</span>,<span class="string">copyright</span>]</span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>则实现文章底部灵活开启版权模块</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>copyright</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Steam商店便捷按钮脚本</title>
     <url>/2021/01/30/script/SteamStoreToolsBtn/</url>
     <content><![CDATA[<blockquote>
@@ -250,6 +257,44 @@
         <tag>STEAM</tag>
         <tag>脚本</tag>
         <tag>Tampermonkey</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo next 引入live2d 博客板娘</title>
+    <url>/2021/01/30/hexo/2Dlive/</url>
+    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
+<ol>
+<li><p>最简单CDN导入(功能限制太多)</p>
+<blockquote>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>本地配置 (功能齐全)</p>
+</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
+<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
+<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
+<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
+<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+<script src="/live2d-widget/autoload.js"></script>
+
+<p>即可 预览效果</p>
+<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
+<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>板娘</tag>
       </tags>
   </entry>
   <entry>
