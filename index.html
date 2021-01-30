@@ -209,6 +209,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/uni/cloudfunctions-DB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/uni/cloudfunctions-DB/" class="post-title-link" itemprop="url">云函数 调用 DB 基本方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 11:35:23 / 修改时间：12:04:00" itemprop="dateCreated datePublished" datetime="2021-01-30T11:35:23+00:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/uniCloud/" itemprop="url" rel="index"><span itemprop="name">uniCloud</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">exports.main = <span class="keyword">async</span> (<span class="keyword">event</span>, context) =&gt; &#123;</span><br><span class="line">	<span class="comment">//event为客户端上传的参数</span></span><br><span class="line">	console.log(<span class="string">&#x27;event : &#x27;</span>, <span class="keyword">event</span>)</span><br><span class="line">	<span class="comment">// 查 增 改 删</span></span><br><span class="line">	<span class="keyword">const</span> db = uniCloud.database()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">get</span>()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">add</span>(<span class="keyword">event</span>.addData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).update(<span class="keyword">event</span>.changeData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).<span class="keyword">remove</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回数据给客户端</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		data: res,</span><br><span class="line">		code: <span class="number">200</span>,</span><br><span class="line">		msg: <span class="string">&#x27;获取成功!&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/30/uni/cloudfunctions-DB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/uni/unicloud-db/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/uni/unicloud-db/" class="post-title-link" itemprop="url">unicloud-db 踩坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 10:51:32 / 修改时间：11:06:54" itemprop="dateCreated datePublished" datetime="2021-01-30T10:51:32+00:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/uniCloud/" itemprop="url" rel="index"><span itemprop="name">uniCloud</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://unicloud.dcloud.net.cn/login">uniCloud 控制端</a><br><code>&lt;unicloud-db&gt;</code> <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/uniCloud/unicloud-db">官方文档</a></p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">unicloud-db</span> <span class="attr">v-slot:default</span>=<span class="string">&quot;&#123;data, loading, error, options&#125;&quot;</span> <span class="attr">collection</span>=<span class="string">&quot;table1&quot;</span>  <span class="attr">ref</span>=<span class="string">&quot;udb&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">v-if</span>=<span class="string">&quot;error&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">error.message</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">v-else-if</span>=<span class="string">&quot;loading&quot;</span>&gt;</span>正在加载...<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">v-else</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; <span class="name">data</span>&#125;&#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">unicloud-db</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>使用前需配置</strong> <strong>DB Schema</strong>  <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/uniCloud/schema">官方文档</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/30/uni/unicloud-db/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/node/Node-MQTT-WebSocket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -234,7 +384,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-30 08:37:31 / 修改时间：10:36:11" itemprop="dateCreated datePublished" datetime="2021-01-30T08:37:31+00:00">2021-01-30</time>
+              <time title="创建时间：2021-01-30 08:37:31 / 修改时间：10:46:10" itemprop="dateCreated datePublished" datetime="2021-01-30T08:37:31+00:00">2021-01-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,10 +407,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="搭建-Mosca-服务端"><a href="#搭建-Mosca-服务端" class="headerlink" title="搭建 Mosca 服务端"></a>搭建 Mosca 服务端</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mosca <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+          <h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>Mosca 为 消息缓存 及 MQTT消息–主题订阅相互配对 的中转服务器<br>MQTT 分为 发布端 和 订阅端  与传统http 三次握手不一样<br>MQTT 只需在连接之初向服务器订阅相关的主题 则可以实现消息的持续接收 在效率，数据响应方面便捷于传统请求<br>MQTT 多用于工业 后端 与 硬件设备、总控间的实时通讯协议<br>前端无法直接使用 MQTT 与后端进行数据交互 实际使用为 websocket 协议</p>
+<h4 id="搭建-Mosca-服务端"><a href="#搭建-Mosca-服务端" class="headerlink" title="搭建 Mosca 服务端"></a>搭建 Mosca 服务端</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mosca <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 <h4 id="安装MQTT-前端同样安装"><a href="#安装MQTT-前端同样安装" class="headerlink" title="安装MQTT  /  前端同样安装"></a>安装MQTT  /  前端同样安装</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mqtt <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 <h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><p><a target="_blank" rel="noopener" href="https://mqttx.app/cn/">MQTTX</a></p>
-<h4 id="Mosca-及-published-镶嵌到app-js"><a href="#Mosca-及-published-镶嵌到app-js" class="headerlink" title="Mosca 及 published 镶嵌到app.js"></a>Mosca 及 published 镶嵌到app.js</h4><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mosca=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/server&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">published</span>=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/published&#x27;</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/01/30/node/Node-MQTT-WebSocket/#more" rel="contents">
@@ -841,191 +991,6 @@
   
   
   
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/script/SteamBuff_Market-WalletBalance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/script/SteamBuff_Market-WalletBalance/" class="post-title-link" itemprop="url">饰品筛选倒余额脚本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 10:18:26 / 修改时间：13:13:25" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h5><blockquote>
-<p> <a target="_blank" rel="noopener" href="https://keylol.com/t577669-1-1">饰品筛选倒余额 (Keylol论坛)</a> </p>
-</blockquote>
-<h5 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h5><blockquote>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://buff.163.com/">Buff</a> </li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://www.igxe.cn/dota2/570?sort=3">igxe</a></li>
-<li><input disabled="" type="checkbox"> c5game<ul>
-<li><input checked="" disabled="" type="checkbox"> <a href="https//www.c5game.com/dota.html">dota</a></li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://www.c5game.com/csgo/default/result.html?sort=update_time">csgo</a></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/script/SteamBuff_Market-WalletBalance/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/29/steam-info/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/29/steam-info/" class="post-title-link" itemprop="url">Steam API Info</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-29 06:22:58 / 修改时间：15:16:29" itemprop="dateCreated datePublished" datetime="2021-01-29T06:22:58+00:00">2021-01-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/STEAM/" itemprop="url" rel="index"><span itemprop="name">STEAM</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="汇率接口"><a href="#汇率接口" class="headerlink" title="汇率接口"></a>汇率接口</h4><p><a target="_blank" rel="noopener" href="https://esapi.isthereanydeal.com/v01/rates/?to=CNY">https://esapi.isthereanydeal.com/v01/rates/?to=CNY</a></p>
-<!--相对于 CNY 的倍率-->
-
-<table>
-<thead>
-<tr>
-<th align="center">result</th>
-<th align="center">data</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">success</td>
-<td align="center">Object</td>
-</tr>
-</tbody></table>
-<h4 id="游戏基本信息"><a href="#游戏基本信息" class="headerlink" title="游戏基本信息"></a>游戏基本信息</h4><p><a target="_blank" rel="noopener" href="https://store.steampowered.com/apphoverpublic/1366540?review_score_preference=0&amp;l=schinese&amp;pagev6=true">https://store.steampowered.com/apphoverpublic/1366540?review_score_preference=0&amp;l=schinese&amp;pagev6=true</a></p>
-<!--XML-->
-
-<ol>
-<li>游戏名称</li>
-<li>发行日期</li>
-<li>总评测信息</li>
-<li>游戏标签</li>
-<li>商店展示截图URL</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/29/steam-info/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
   
   <nav class="pagination">
@@ -1097,20 +1062,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
