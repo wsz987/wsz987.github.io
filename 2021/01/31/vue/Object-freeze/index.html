@@ -36,17 +36,21 @@
     var CONFIG = {"hostname":"wsz987.githyb.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Hello,here is wsz987&#39;s blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wsz987">
-<meta property="og:url" content="http://wsz987.githyb.io/tags/Tampermonkey/index.html">
+  <meta name="description" content="vue 实现视图响应数据变化的原理: 是用过 Object.defineProperty()对数据进行劫持 Object.defineProperty() 但如果组件只是纯粹的数据展示,不会有任何改变  则不需要 vue的数据劫持 通过Object.freeze()方法来冻结一个对象，一旦被冻结的对象就再也不能被修改了 Object.freeze() 大量数据展示的情况下，这能够很明显的减少组件初">
+<meta property="og:type" content="article">
+<meta property="og:title" content="长列表性能优化 Object.freeze()">
+<meta property="og:url" content="http://wsz987.githyb.io/2021/01/31/vue/Object-freeze/index.html">
 <meta property="og:site_name" content="wsz987">
-<meta property="og:description" content="Hello,here is wsz987&#39;s blog.">
+<meta property="og:description" content="vue 实现视图响应数据变化的原理: 是用过 Object.defineProperty()对数据进行劫持 Object.defineProperty() 但如果组件只是纯粹的数据展示,不会有任何改变  则不需要 vue的数据劫持 通过Object.freeze()方法来冻结一个对象，一旦被冻结的对象就再也不能被修改了 Object.freeze() 大量数据展示的情况下，这能够很明显的减少组件初">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-31T06:34:50.000Z">
+<meta property="article:modified_time" content="2021-01-31T06:52:14.586Z">
 <meta property="article:author" content="wsz987">
+<meta property="article:tag" content="VUE">
+<meta property="article:tag" content="性能优化">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wsz987.githyb.io/tags/Tampermonkey/">
+<link rel="canonical" href="http://wsz987.githyb.io/2021/01/31/vue/Object-freeze/">
 
 
 <script id="page-configurations">
@@ -54,12 +58,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Tampermonkey | wsz987</title>
+  <title>长列表性能优化 Object.freeze() | wsz987</title>
   
 
 
@@ -203,97 +207,130 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/31/vue/Object-freeze/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          长列表性能优化 Object.freeze()<a href="https://github.com/wsz987/wsz987.github.io/2021/01/29_posts/vue/Object-freeze.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil-alt"></i></a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-31 06:34:50 / 修改时间：06:52:14" itemprop="dateCreated datePublished" datetime="2021-01-31T06:34:50+00:00">2021-01-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VUE/" itemprop="url" rel="index"><span itemprop="name">VUE</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Tampermonkey
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/31/vue/Object-freeze/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/31/vue/Object-freeze/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <p><code>vue</code> 实现视图响应数据变化的原理: 是用过 <code>Object.defineProperty()</code>对数据进行劫持</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty()</a></p>
+<p>但如果组件只是<strong>纯粹的数据展示,不会有任何改变</strong>  则不需要 <code>vue</code>的数据劫持</p>
+<p>通过<code>Object.freeze()</code>方法来冻结一个对象，一旦被冻结的对象就再也不能被修改了</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></p>
+<p>大量数据展示的情况下，这能够很明显的减少组件初始化的时间</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  data: () =&gt; (&#123;</span><br><span class="line">    users: &#123;&#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  async created() &#123;</span><br><span class="line">    const users = await axios.<span class="keyword">get</span>(&quot;/api/users&quot;);</span><br><span class="line">    this.users = <span class="keyword">Object</span>.<span class="keyword">freeze</span>(users);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-30T07:05:27+00:00"
-              content="2021-01-30">
-          01-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/30/script/SteamStoreToolsBtn/" itemprop="url">
-            <span itemprop="name">Steam商店便捷按钮脚本</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-30T06:46:36+00:00"
-              content="2021-01-30">
-          01-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/30/script/keylol-tools/" itemprop="url">
-            <span itemprop="name">Keylol有卡/中文/包类游戏标记脚本</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-29T10:18:26+00:00"
-              content="2021-01-29">
-          01-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/29/script/SteamBuff_Market-WalletBalance/" itemprop="url">
-            <span itemprop="name">饰品筛选倒余额脚本</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<blockquote>
+<p><strong>这里只是冻结了<code>users</code>的值  若需要 重新激活数据 只需要<code>users</code>重新赋值即可</strong> </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">    users: []</span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="keyword">async</span> <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> users = <span class="keyword">await</span> axios.get(<span class="string">&quot;/api/users&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.users = <span class="built_in">Object</span>.freeze(users);</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    <span class="comment">// 改变值不会触发视图响应</span></span><br><span class="line">    <span class="built_in">this</span>.users[<span class="number">0</span>] = newValue</span><br><span class="line">    <span class="comment">// 改变引用依然会触发视图响应</span></span><br><span class="line">    <span class="built_in">this</span>.users = newArray</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="转载声明-本文只做笔记-理解性质"><a href="#转载声明-本文只做笔记-理解性质" class="headerlink" title="转载声明  本文只做笔记+理解性质"></a>转载声明  本文只做笔记+理解性质</h4><p>作者：skinner<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903848050589704">https://juejin.cn/post/6844903848050589704</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
     </div>
-  </div>
-  
-  
-  
 
-  
+    
+    
+    
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/VUE/" rel="tag"><i class="fa fa-tag"></i> VUE</a>
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 性能优化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/31/vue/Vue-Set-Clear-Interval/" rel="prev" title="Vue中的 setInterval 与 clearInterval">
+      <i class="fa fa-chevron-left"></i> Vue中的 setInterval 与 clearInterval
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -340,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E8%BD%BD%E5%A3%B0%E6%98%8E-%E6%9C%AC%E6%96%87%E5%8F%AA%E5%81%9A%E7%AC%94%E8%AE%B0-%E7%90%86%E8%A7%A3%E6%80%A7%E8%B4%A8"><span class="nav-number">1.</span> <span class="nav-text">转载声明  本文只做笔记+理解性质</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
