@@ -15,41 +15,84 @@
 ]]></content>
   </entry>
   <entry>
-    <title>hexo next 引入live2d 博客板娘</title>
-    <url>/2021/01/30/hexo/2Dlive/</url>
-    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
-<ol>
-<li><p>最简单CDN导入(功能限制太多)</p>
-<blockquote>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    <title>ES6 简洁好用的写法 笔记</title>
+    <url>/2021/01/31/JavaScript/ES6/</url>
+    <content><![CDATA[<p><strong>摘抄至</strong> <a href="https://zhuanlan.zhihu.com/p/24350862">知乎文章</a>   部分笔记</p>
+<h4 id="从数组中获取元素"><a href="#从数组中获取元素" class="headerlink" title="从数组中获取元素"></a>从数组中获取元素</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">var array = [1, 2, 3, 4];</span><br><span class="line">var first = array[0];</span><br><span class="line">var third = array[2];</span><br><span class="line">console.log(first, third); // 1 3</span><br></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">const array = [1, 2, 3, 4];</span><br><span class="line">const [first, ,third] = array;</span><br><span class="line">console.log(first, third); // 1 3</span><br></pre></td></tr></table></figure>
+<hr>
 <a id="more"></a>
-</li>
-<li><p>本地配置 (功能齐全)</p>
-</li>
-</ol>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
-<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
-<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
-<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
-<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
-<script src="/live2d-widget/autoload.js"></script>
 
-<p>即可 预览效果</p>
-<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
-<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
+<h4 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var tmp = a;</span><br><span class="line">a = b;</span><br><span class="line">b = tmp;</span><br><span class="line">console.log(a, b); // 2 1</span><br></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES6</span><br><span class="line">let a = 1;</span><br><span class="line">let b = 2;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line">console.log(a, b); // 2 1</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">function point(x, y, isFlag)&#123;</span><br><span class="line">  x = x || 0;</span><br><span class="line">  y = y || -1;</span><br><span class="line">  isFlag = isFlag || true;</span><br><span class="line">  console.log(x,y, isFlag);</span><br><span class="line">&#125;</span><br><span class="line">point(0, 0) // 0 -1 true ?</span><br><span class="line">point(0, 0, false) // 0 -1 true ??</span><br><span class="line">point(1) // 1 -1 true</span><br><span class="line">point() // 0 -1 true</span><br></pre></td></tr></table></figure>
+<p><strong>Why?</strong> </p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">function point(x, y, isFlag)&#123;</span><br><span class="line">  x = x || 0;</span><br><span class="line">  y = typeof(y) === &#x27;undefined&#x27; ? -1 : y;</span><br><span class="line">  isFlag = typeof(isFlag) === &#x27;undefined&#x27; ? true : isFlag;</span><br><span class="line">  console.log(x,y, isFlag);</span><br><span class="line">&#125;</span><br><span class="line">point(0, 0) // 0 0 true</span><br><span class="line">point(0, 0, false) // 0 0 false</span><br><span class="line">point(1) // 1 -1 true</span><br><span class="line">point() // 0 -1 true</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES6</span><br><span class="line">function point(x = 0, y = -1, isFlag = true)&#123;</span><br><span class="line">  console.log(x,y, isFlag);</span><br><span class="line">&#125;</span><br><span class="line">point(0, 0) // 0 0 true</span><br><span class="line">point(0, 0, false) // 0 0 false</span><br><span class="line">point(1) // 1 -1 true</span><br><span class="line">point() // 0 -1 true</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="多个返回值的结构"><a href="#多个返回值的结构" class="headerlink" title="多个返回值的结构"></a>多个返回值的结构</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">function margin() &#123;</span><br><span class="line">  var left=1, right=2, top=3, bottom=4;</span><br><span class="line">  return &#123; left: left, right: right, top: top, bottom: bottom &#125;;</span><br><span class="line">&#125;</span><br><span class="line">var data = margin();</span><br><span class="line">var left = data.left;</span><br><span class="line">var bottom = data.bottom;</span><br><span class="line">console.log(left, bottom); // 1 4</span><br></pre></td></tr></table></figure>
+<p>在第 3 行中，你也可以用一个像这样的数组返回（同时省去了一些编码）：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">return [left, right, top, bottom];</span><br></pre></td></tr></table></figure>
+<p>但另一方面，调用者需要考虑返回数据的顺序。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">var left = data[0];</span><br><span class="line">var bottom = data[3];</span><br></pre></td></tr></table></figure>
+<p>用 ES6，调用者只需选择他们需要的数据即可（第 6 行）：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES6</span><br><span class="line"></span><br><span class="line">function margin() &#123;</span><br><span class="line">  const left=1, right=2, top=3, bottom=4;</span><br><span class="line">  return &#123; left, right, top, bottom &#125;;</span><br><span class="line">&#125;</span><br><span class="line">const &#123; left, bottom &#125; = margin();</span><br><span class="line">console.log(left, bottom); // 1 4</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="参数匹配的结构"><a href="#参数匹配的结构" class="headerlink" title="参数匹配的结构"></a>参数匹配的结构</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES5</span><br><span class="line">var user = &#123;firstName: &#x27;Adrian&#x27;, lastName: &#x27;Mejia&#x27;&#125;;</span><br><span class="line">function getFullName(user) &#123;</span><br><span class="line">  var firstName = user.firstName;</span><br><span class="line">  var lastName = user.lastName;</span><br><span class="line">  return firstName + &#x27; &#x27; + lastName;</span><br><span class="line">&#125;</span><br><span class="line">console.log(getFullName(user)); // Adrian Mejia</span><br></pre></td></tr></table></figure>
+<p>等同于（但更简洁）：<strong>注意 ({ firstName, lastName })写法</strong></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">// ES6</span><br><span class="line">const user = &#123;firstName: &#x27;Adrian&#x27;, lastName: &#x27;Mejia&#x27;&#125;;</span><br><span class="line">function getFullName(&#123; firstName, lastName &#125;) &#123;</span><br><span class="line">  return `$&#123;firstName&#125; $&#123;lastName&#125;`;</span><br><span class="line">&#125;</span><br><span class="line">console.log(getFullName(user)); // Adrian Mejia</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>hexo</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>板娘</tag>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>forEach for...in for...of 遍历</title>
+    <url>/2021/01/31/JavaScript/for-Each-in-of/</url>
+    <content><![CDATA[<blockquote>
+<p>v-for=”( item, key, index ) in Object”</p>
+<p>Object.keys(obj) 获取键值  </p>
+</blockquote>
+<h4 id="forEach-val-index-不改变原数组"><a href="#forEach-val-index-不改变原数组" class="headerlink" title="forEach(val, index) 不改变原数组"></a>forEach(val, index) 不改变原数组</h4><h4 id="for…in-遍历Object的键值"><a href="#for…in-遍历Object的键值" class="headerlink" title="for…in 遍历Object的键值"></a>for…in 遍历Object的键值</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="string">&#x27;1&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;2&#x27;</span>, <span class="attr">c</span>: <span class="string">&#x27;3&#x27;</span>, <span class="attr">d</span>: <span class="string">&#x27;4&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> o <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o)    <span class="comment">//遍历的实际上是对象的属性名称 a,b,c,d</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj[o])  <span class="comment">//这个才是属性对应的值1，2，3，4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="for…of-ES6"><a href="#for…of-ES6" class="headerlink" title="for…of  (ES6)"></a>for…of  (ES6)</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;China&#x27;</span>, <span class="string">&#x27;America&#x27;</span>, <span class="string">&#x27;Korea&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> o <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o) <span class="comment">//China, America, Korea</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p><strong>直接遍历对象 (error)</strong></p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="variable">a:</span> <span class="string">&#x27;1&#x27;</span>, <span class="variable">b:</span> <span class="string">&#x27;2&#x27;</span>, <span class="keyword">c</span>: <span class="string">&#x27;3&#x27;</span>, d: <span class="string">&#x27;4&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> <span class="keyword">o</span> of obj) &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="keyword">o</span>)   //Uncaught TypeError: obj[Symbol.iterator] <span class="keyword">is</span> not <span class="keyword">a</span> <span class="function"><span class="keyword">function</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>字符串</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;love&#x27;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> o <span class="keyword">of</span> str) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o) <span class="comment">// l,o,v,e</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Object.key()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="string">&#x27;1&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;2&#x27;</span>, <span class="attr">c</span>: <span class="string">&#x27;3&#x27;</span>, <span class="attr">d</span>: <span class="string">&#x27;4&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> o <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o) <span class="comment">// a,b,c,d</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Object.values()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="string">&#x27;1&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;2&#x27;</span>, <span class="attr">c</span>: <span class="string">&#x27;3&#x27;</span>, <span class="attr">d</span>: <span class="string">&#x27;4&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> o <span class="keyword">of</span> <span class="built_in">Object</span>.values(obj)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(o) <span class="comment">// 1,2,3,4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>new Map()</strong></p>
+<blockquote>
+<p>new Map([[key,value],[key,value]])</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iterable = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">&quot;a&quot;</span>, <span class="number">1</span>], [<span class="string">&quot;b&quot;</span>, <span class="number">2</span>], [<span class="string">&quot;c&quot;</span>, <span class="number">3</span>]]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(entry);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [a, 1]</span></span><br><span class="line"><span class="comment">// [b, 2]</span></span><br><span class="line"><span class="comment">// [c, 3]</span></span><br></pre></td></tr></table></figure>
+<p><strong>new Set()</strong></p>
+<blockquote>
+<p><strong>类似于数组</strong>，但它<strong>所有元素都是唯一的</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iterable = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+        <tag>遍历</tag>
+        <tag>对象</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -76,8 +119,8 @@
       </categories>
       <tags>
         <tag>JS</tag>
-        <tag>特效</tag>
         <tag>JavaScript</tag>
+        <tag>特效</tag>
       </tags>
   </entry>
   <entry>
@@ -124,6 +167,44 @@
       <tags>
         <tag>hexo</tag>
         <tag>copyright</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo next 引入live2d 博客板娘</title>
+    <url>/2021/01/30/hexo/2Dlive/</url>
+    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
+<ol>
+<li><p>最简单CDN导入(功能限制太多)</p>
+<blockquote>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>本地配置 (功能齐全)</p>
+</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
+<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
+<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
+<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
+<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+<script src="/live2d-widget/autoload.js"></script>
+
+<p>即可 预览效果</p>
+<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
+<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>板娘</tag>
       </tags>
   </entry>
   <entry>
@@ -685,8 +766,11 @@
 
 <p>[^bundleids]: </p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;result&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;sub/479270&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;price&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;store&quot;</span>: <span class="string">&quot;Steam&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;cut&quot;</span>: <span class="number">10</span>,</span><br><span class="line">          <span class="attr">&quot;price&quot;</span>: <span class="number">63</span>,</span><br><span class="line">          <span class="attr">&quot;price_formatted&quot;</span>: <span class="string">&quot;&amp;yen;63.00&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;https://store.steampowered.com/app/1366540/&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;drm&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;steam&quot;</span></span><br><span class="line">          ]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;lowest&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;store&quot;</span>: <span class="string">&quot;Steam&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;cut&quot;</span>: <span class="number">10</span>,</span><br><span class="line">          <span class="attr">&quot;price&quot;</span>: <span class="number">63</span>,</span><br><span class="line">          <span class="attr">&quot;price_formatted&quot;</span>: <span class="string">&quot;&amp;yen;63.00&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;https://store.steampowered.com/app/1366540/&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;recorded&quot;</span>: <span class="number">1611214510</span>,</span><br><span class="line">          <span class="attr">&quot;recorded_formatted&quot;</span>: <span class="string">&quot;6 days ago&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;bundles&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;count&quot;</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">&quot;live&quot;</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;urls&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;info&quot;</span>: <span class="string">&quot;https://isthereanydeal.com/game/dysonsphereprogramdaisenqiujihua/info/&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;history&quot;</span>: <span class="string">&quot;https://isthereanydeal.com/game/dysonsphereprogramdaisenqiujihua/history/&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;bundles&quot;</span>: <span class="string">&quot;https://isthereanydeal.com/specials/#/filter:search/dysonsphereprogramdaisenqiujihua&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;.meta&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;region&quot;</span>: <span class="string">&quot;cn&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;country&quot;</span>: <span class="string">&quot;CN&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;currency&quot;</span>: <span class="string">&quot;CNY&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="账户通知"><a href="#账户通知" class="headerlink" title="账户通知"></a>账户通知</h4><p><a href="https://steamcommunity.com/actions/GetNotificationCounts">https://steamcommunity.com/actions/GetNotificationCounts</a></p>
+<h4 id="账户消息通知"><a href="#账户消息通知" class="headerlink" title="账户消息通知"></a>账户消息通知</h4><p><a href="https://steamcommunity.com/actions/GetNotificationCounts">https://steamcommunity.com/actions/GetNotificationCounts</a></p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;notifications&quot;</span>:&#123;<span class="attr">&quot;4&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;5&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;6&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;8&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;9&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;1&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;2&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;3&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;10&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;11&quot;</span>:<span class="number">0</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">GET</span></span><br></pre></td></tr></table></figure>
+
+
 <h4 id="热销榜"><a href="#热销榜" class="headerlink" title="热销榜"></a>热销榜</h4><p><a href="https://store.steampowered.com/search/results/?filter=globaltopsellers&amp;count=25&amp;start=0&amp;infinite=0&amp;sort_by=_ASC">https://store.steampowered.com/search/results/?filter=globaltopsellers&amp;count=25&amp;start=0&amp;infinite=0&amp;sort_by=_ASC</a></p>
 <p>[^filter]: globaltopsellers 全球<br>[^count]: 返回总数 默认50 最小25<br>[^start]: 开始区间 默认0<br>[^infinite]: 默认0–渲染   1–带dom文本<br>[^sort_by]: 排序方式  ASC–相关性  Reviews_DESC–用户评测  Released_DESC–发行日期  Name_ASC–名称 Price_ASC–价格低到高  Price_DESC–价格高到低</p>
 <h4 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h4><p><a href="https://steam-chat.com/miniprofile/870906664/json">https://steam-chat.com/miniprofile/870906664/json</a></p>
