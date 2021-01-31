@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>bilibili-info</title>
+    <url>/2021/01/31/bilibili-info/</url>
+    <content><![CDATA[<p>搜索接口<br><a href="https://api.bilibili.com/x/web-interface/search/all/v2?keyword=%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98">https://api.bilibili.com/x/web-interface/search/all/v2?keyword=咒术回战</a></p>
+<p>[^data.result[3]]: result_type: “media_bangumi “番剧信息<br>[^data.result[3].data[0].eps]: 集数页面地址</p>
+]]></content>
+      <categories>
+        <category>Bilibili</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/01/29/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -124,6 +134,44 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo next 引入live2d 博客板娘</title>
+    <url>/2021/01/30/hexo/2Dlive/</url>
+    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
+<ol>
+<li><p>最简单CDN导入(功能限制太多)</p>
+<blockquote>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>本地配置 (功能齐全)</p>
+</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
+<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
+<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
+<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
+<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
+<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
+<script src="/live2d-widget/autoload.js"></script>
+
+<p>即可 预览效果</p>
+<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
+<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>板娘</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo 新版next 文章版权启用</title>
     <url>/2021/01/29/hexo/copyright/</url>
     <content><![CDATA[<p>前言: 网上找到的老版 版权开启方法不起作用</p>
@@ -167,44 +215,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>copyright</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo next 引入live2d 博客板娘</title>
-    <url>/2021/01/30/hexo/2Dlive/</url>
-    <content><![CDATA[<h4 id="live2D-博客板娘"><a href="#live2D-博客板娘" class="headerlink" title="live2D 博客板娘"></a>live2D 博客板娘</h4><p>Github 大佬仓库 <a href="https://github.com/stevenjoezhang/live2d-widget">live2d-widget</a></p>
-<ol>
-<li><p>最简单CDN导入(功能限制太多)</p>
-<blockquote>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-</li>
-<li><p>本地配置 (功能齐全)</p>
-</li>
-</ol>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">git</span>@github.com:stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure>
-<p>下载后将 文件夹改名 <code>live2d-widget</code> 并拉到<code>themes\next\source\js</code>目录下</p>
-<p>打开<code>themes\next\source\live2d-widget\autoload.js</code></p>
-<p><strong>注释掉</strong>  <del>const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</a>;</del></p>
-<p><strong>取消</strong>  <code>const live2d_path = &quot;/live2d-widget/&quot;;</code>  <strong>注释</strong>  或手动改路径<code>/live2d-widget/</code></p>
-<p>到布局文件 <code>themes\next\layout\_layout.swig</code>  <head>中 手动引入</p>
-<script src="/live2d-widget/autoload.js"></script>
-
-<p>即可 预览效果</p>
-<p>如需改变样式 布局 到<code>themes\next\source\live2d-widget\waifu.css</code></p>
-<p>找到 <code>left: 0</code> 改为 <code>right: 0;</code>  即可实现 右下角布局</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>记得将 默认 <code>right: -10px;</code>改为 <code>left: -10px;</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>板娘</tag>
       </tags>
   </entry>
   <entry>
@@ -276,6 +286,50 @@
       <tags>
         <tag>移动端</tag>
         <tag>rem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node基础及跨域配置</title>
+    <url>/2021/01/30/node/Node-Allow-Origin/</url>
+    <content><![CDATA[<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="跨域配置"><a href="#跨域配置" class="headerlink" title="跨域配置"></a>跨域配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.all(<span class="string">&#x27;*&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const register = <span class="built_in">require</span>(<span class="string">&#x27;./api/register&#x27;</span>);</span><br><span class="line">const login = <span class="built_in">require</span>(<span class="string">&#x27;./api/login&#x27;</span>);</span><br><span class="line">const getValue = <span class="built_in">require</span>(<span class="string">&#x27;./api/getValue&#x27;</span>);</span><br><span class="line">app.post(<span class="string">&#x27;/user/regist&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> register(req, res));</span><br><span class="line">app.post(<span class="string">&#x27;/user/login&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> login(req, res));</span><br><span class="line">app.get(<span class="string">&#x27;/getValue&#x27;</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span> getValue(req,res));</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = <span class="number">81</span></span><br><span class="line">app.listen(port, hostName, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node MySQL配置及登录注册接口实例</title>
+    <url>/2021/01/30/node/Node-MySQL/</url>
+    <content><![CDATA[<h4 id="安装MySQL依赖"><a href="#安装MySQL依赖" class="headerlink" title="安装MySQL依赖"></a>安装MySQL依赖</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
+</blockquote>
+<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="login-js"><a href="#login-js" class="headerlink" title="login.js"></a>login.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;login -&gt; param&quot;</span>, param)</span><br><span class="line">    <span class="keyword">let</span> username = param.username;</span><br><span class="line">    <span class="keyword">let</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查询数据库中是否有用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有用户名，查询密码是否相同</span></span><br><span class="line">                <span class="keyword">if</span>(password == results[<span class="number">0</span>].password)&#123;</span><br><span class="line">                    <span class="comment">//3、密码相同则登陆成功</span></span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;登陆成功&#x27;</span>,<span class="number">200</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，密码错误&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，没有此用户名&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，用户名或密码不能为空&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = login;</span><br></pre></td></tr></table></figure>
+<h4 id="register-js"><a href="#register-js" class="headerlink" title="register.js"></a>register.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> param = req.body;</span><br><span class="line">    <span class="keyword">const</span> username = param.username;</span><br><span class="line">    <span class="keyword">const</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查看数据库中是否有相同用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有相同用户名，则注册失败，用户名重复</span></span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名重复&#x27;</span>,<span class="number">422</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(<span class="string">&quot;INSERT INTO user(username,password) VALUES(?,?)&quot;</span>, [username,password],<span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">                    <span class="comment">//3、如果没有相同用户名，并且有一条记录，则注册成功</span></span><br><span class="line">                    <span class="keyword">if</span>(results.affectedRows==<span class="number">1</span>)&#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;注册成功&#x27;</span>,<span class="number">201</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名、密码不能为空&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = register;</span><br></pre></td></tr></table></figure>
+<h4 id="response-js-封装"><a href="#response-js-封装" class="headerlink" title="response.js 封装"></a>response.js 封装</h4><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(success,msg,code,result)&#123;</span><br><span class="line">       <span class="keyword">this</span>.success = success;</span><br><span class="line">       <span class="keyword">this</span>.msg = msg;</span><br><span class="line">       <span class="keyword">this</span>.code = code;</span><br><span class="line">       <span class="keyword">this</span>.result = result;</span><br><span class="line">       <span class="keyword">this</span>.<span class="keyword">data</span>=<span class="string">&#x27;666&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Response;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -381,51 +435,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Steam商店便捷按钮脚本</title>
-    <url>/2021/01/30/script/SteamStoreToolsBtn/</url>
-    <content><![CDATA[<blockquote>
-<p>steam商店页面添加点数商店,市场和截图页面跳转按钮,</p>
-<blockquote>
-<p>steam页面/社区导航栏添加网页key激活跳转</p>
-</blockquote>
-<p><a href="https://keylol.com/t615154-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
-<p>脚本基于 <a href="http://www.tampermonkey.net/">油猴</a>  <a href="https://greasyfork.org/zh-CN/scripts/406317">下载</a></p>
-</blockquote>
-<h4 id="脚本可自行配置"><a href="#脚本可自行配置" class="headerlink" title="脚本可自行配置"></a>脚本可自行配置</h4><a id="more"></a>
-
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">const setting = &#123;</span><br><span class="line">        窗口聚焦: false,</span><br><span class="line">        DOM: [&#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;screenshots_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>steamcommunity.com<span class="regexp">/app/</span><span class="variable">$&#123;appid&#125;</span><span class="regexp">/screenshots/</span>`,</span><br><span class="line">                name:<span class="string">&#x27;截图&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;market_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>steamcommunity.com<span class="regexp">/market/</span>search?appid=<span class="number">753</span>&amp;category_753_Game[]=tag_app_<span class="variable">$&#123;appid&#125;</span>`,</span><br><span class="line">                name:<span class="string">&#x27;市场&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;points_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>store.steampowered.com<span class="regexp">/points/</span>shop<span class="regexp">/app/</span><span class="variable">$&#123;appid&#125;</span>`,</span><br><span class="line">                name:<span class="string">&#x27;点数商店&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>脚本</category>
-      </categories>
-      <tags>
-        <tag>STEAM</tag>
-        <tag>脚本</tag>
-        <tag>Tampermonkey</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Keylol有卡/中文/包类游戏标记脚本</title>
-    <url>/2021/01/30/script/keylol-tools/</url>
-    <content><![CDATA[<blockquote>
-<p>Keylol论坛自动检索帖子内容 </p>
-<blockquote>
-<p>并标记有卡/中文游戏 自定义面板 嗨皮喜加一 包类标记 帖子游戏链接转化游戏名等</p>
-</blockquote>
-<p><a href="https://keylol.com/t587145-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
-<p>脚本基于 <a href="http://www.tampermonkey.net/">油猴</a>  <a href="https://greasyfork.org/zh-CN/scripts/401805">下载</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>脚本</category>
-      </categories>
-      <tags>
-        <tag>脚本</tag>
-        <tag>Tampermonkey</tag>
-        <tag>keylol</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Node 镶嵌MQTT及前端WebSocket通讯</title>
     <url>/2021/01/30/node/Node-MQTT-WebSocket/</url>
     <content><![CDATA[<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>Mosca 为 消息缓存 及 MQTT消息–主题订阅相互配对 的中转服务器<br>MQTT 分为 发布端 和 订阅端  与传统http 三次握手不一样<br>MQTT 只需在连接之初向服务器订阅相关的主题 则可以实现消息的持续接收 在效率，数据响应方面便捷于传统请求<br>MQTT 多用于工业 后端 与 硬件设备、总控间的实时通讯协议<br>前端无法直接使用 MQTT 与后端进行数据交互 实际使用为 websocket 协议</p>
@@ -476,47 +485,48 @@
       </tags>
   </entry>
   <entry>
-    <title>Node基础及跨域配置</title>
-    <url>/2021/01/30/node/Node-Allow-Origin/</url>
-    <content><![CDATA[<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="跨域配置"><a href="#跨域配置" class="headerlink" title="跨域配置"></a>跨域配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.all(<span class="string">&#x27;*&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const register = <span class="built_in">require</span>(<span class="string">&#x27;./api/register&#x27;</span>);</span><br><span class="line">const login = <span class="built_in">require</span>(<span class="string">&#x27;./api/login&#x27;</span>);</span><br><span class="line">const getValue = <span class="built_in">require</span>(<span class="string">&#x27;./api/getValue&#x27;</span>);</span><br><span class="line">app.post(<span class="string">&#x27;/user/regist&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> register(req, res));</span><br><span class="line">app.post(<span class="string">&#x27;/user/login&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> login(req, res));</span><br><span class="line">app.get(<span class="string">&#x27;/getValue&#x27;</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span> getValue(req,res));</span><br></pre></td></tr></table></figure>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = <span class="number">81</span></span><br><span class="line">app.listen(port, hostName, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    <title>Keylol有卡/中文/包类游戏标记脚本</title>
+    <url>/2021/01/30/script/keylol-tools/</url>
+    <content><![CDATA[<blockquote>
+<p>Keylol论坛自动检索帖子内容 </p>
+<blockquote>
+<p>并标记有卡/中文游戏 自定义面板 嗨皮喜加一 包类标记 帖子游戏链接转化游戏名等</p>
+</blockquote>
+<p><a href="https://keylol.com/t587145-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
+<p>脚本基于 <a href="http://www.tampermonkey.net/">油猴</a>  <a href="https://greasyfork.org/zh-CN/scripts/401805">下载</a></p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>Node</category>
+        <category>脚本</category>
       </categories>
       <tags>
-        <tag>Node</tag>
-        <tag>跨域</tag>
+        <tag>脚本</tag>
+        <tag>Tampermonkey</tag>
+        <tag>keylol</tag>
       </tags>
   </entry>
   <entry>
-    <title>Node MySQL配置及登录注册接口实例</title>
-    <url>/2021/01/30/node/Node-MySQL/</url>
-    <content><![CDATA[<h4 id="安装MySQL依赖"><a href="#安装MySQL依赖" class="headerlink" title="安装MySQL依赖"></a>安装MySQL依赖</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
+    <title>Steam商店便捷按钮脚本</title>
+    <url>/2021/01/30/script/SteamStoreToolsBtn/</url>
+    <content><![CDATA[<blockquote>
+<p>steam商店页面添加点数商店,市场和截图页面跳转按钮,</p>
 <blockquote>
-<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
+<p>steam页面/社区导航栏添加网页key激活跳转</p>
 </blockquote>
-<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<p><a href="https://keylol.com/t615154-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
+<p>脚本基于 <a href="http://www.tampermonkey.net/">油猴</a>  <a href="https://greasyfork.org/zh-CN/scripts/406317">下载</a></p>
+</blockquote>
+<h4 id="脚本可自行配置"><a href="#脚本可自行配置" class="headerlink" title="脚本可自行配置"></a>脚本可自行配置</h4><a id="more"></a>
 
-<h4 id="login-js"><a href="#login-js" class="headerlink" title="login.js"></a>login.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;login -&gt; param&quot;</span>, param)</span><br><span class="line">    <span class="keyword">let</span> username = param.username;</span><br><span class="line">    <span class="keyword">let</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查询数据库中是否有用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有用户名，查询密码是否相同</span></span><br><span class="line">                <span class="keyword">if</span>(password == results[<span class="number">0</span>].password)&#123;</span><br><span class="line">                    <span class="comment">//3、密码相同则登陆成功</span></span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;登陆成功&#x27;</span>,<span class="number">200</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，密码错误&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，没有此用户名&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，用户名或密码不能为空&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = login;</span><br></pre></td></tr></table></figure>
-<h4 id="register-js"><a href="#register-js" class="headerlink" title="register.js"></a>register.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> param = req.body;</span><br><span class="line">    <span class="keyword">const</span> username = param.username;</span><br><span class="line">    <span class="keyword">const</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查看数据库中是否有相同用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有相同用户名，则注册失败，用户名重复</span></span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名重复&#x27;</span>,<span class="number">422</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(<span class="string">&quot;INSERT INTO user(username,password) VALUES(?,?)&quot;</span>, [username,password],<span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">                    <span class="comment">//3、如果没有相同用户名，并且有一条记录，则注册成功</span></span><br><span class="line">                    <span class="keyword">if</span>(results.affectedRows==<span class="number">1</span>)&#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;注册成功&#x27;</span>,<span class="number">201</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名、密码不能为空&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = register;</span><br></pre></td></tr></table></figure>
-<h4 id="response-js-封装"><a href="#response-js-封装" class="headerlink" title="response.js 封装"></a>response.js 封装</h4><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(success,msg,code,result)&#123;</span><br><span class="line">       <span class="keyword">this</span>.success = success;</span><br><span class="line">       <span class="keyword">this</span>.msg = msg;</span><br><span class="line">       <span class="keyword">this</span>.code = code;</span><br><span class="line">       <span class="keyword">this</span>.result = result;</span><br><span class="line">       <span class="keyword">this</span>.<span class="keyword">data</span>=<span class="string">&#x27;666&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Response;</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">const setting = &#123;</span><br><span class="line">        窗口聚焦: false,</span><br><span class="line">        DOM: [&#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;screenshots_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>steamcommunity.com<span class="regexp">/app/</span><span class="variable">$&#123;appid&#125;</span><span class="regexp">/screenshots/</span>`,</span><br><span class="line">                name:<span class="string">&#x27;截图&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;market_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>steamcommunity.com<span class="regexp">/market/</span>search?appid=<span class="number">753</span>&amp;category_753_Game[]=tag_app_<span class="variable">$&#123;appid&#125;</span>`,</span><br><span class="line">                name:<span class="string">&#x27;市场&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                btn_id: <span class="string">&#x27;points_btn&#x27;</span>,</span><br><span class="line">                href: `https:<span class="regexp">//</span>store.steampowered.com<span class="regexp">/points/</span>shop<span class="regexp">/app/</span><span class="variable">$&#123;appid&#125;</span>`,</span><br><span class="line">                name:<span class="string">&#x27;点数商店&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Node</category>
+        <category>脚本</category>
       </categories>
       <tags>
-        <tag>Node</tag>
-        <tag>MySQL</tag>
+        <tag>STEAM</tag>
+        <tag>脚本</tag>
+        <tag>Tampermonkey</tag>
       </tags>
   </entry>
   <entry>
@@ -581,26 +591,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue中的 setInterval 与 clearInterval</title>
-    <url>/2021/01/31/vue/Vue-Set-Clear-Interval/</url>
-    <content><![CDATA[<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>vue3 删除了 <code>$on/$once/$off</code> API </p>
-<h4 id="一般使用"><a href="#一般使用" class="headerlink" title="一般使用"></a>一般使用</h4><blockquote>
-<p>缺点不利于维护  代码冗余</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;            </span><br><span class="line">    <span class="keyword">return</span> &#123;                              </span><br><span class="line">        timer: <span class="literal">null</span>         </span><br><span class="line">    &#125;        </span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">mouted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.timer = (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">beforeDestroy</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);        </span><br><span class="line">    <span class="built_in">this</span>.timer = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="once-一次性监听器"><a href="#once-一次性监听器" class="headerlink" title="$once 一次性监听器"></a>$once 一次性监听器</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      DateTime: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created () &#123;</span><br><span class="line">    <span class="built_in">this</span>.timeInterval()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    timeInterval () &#123;</span><br><span class="line">      const timer = <span class="built_in">setInterval</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.DateTime = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">      <span class="built_in">this</span>.$once(<span class="string">&#x27;hook:beforeDestroy&#x27;</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>VUE</category>
-      </categories>
-      <tags>
-        <tag>VUE</tag>
-        <tag>setInterval</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>长列表性能优化 Object.freeze()</title>
     <url>/2021/01/31/vue/Object-freeze/</url>
     <content><![CDATA[<p><code>vue</code> 实现视图响应数据变化的原理: 是用过 <code>Object.defineProperty()</code>对数据进行劫持</p>
@@ -624,6 +614,26 @@
       <tags>
         <tag>VUE</tag>
         <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue中的 setInterval 与 clearInterval</title>
+    <url>/2021/01/31/vue/Vue-Set-Clear-Interval/</url>
+    <content><![CDATA[<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>vue3 删除了 <code>$on/$once/$off</code> API </p>
+<h4 id="一般使用"><a href="#一般使用" class="headerlink" title="一般使用"></a>一般使用</h4><blockquote>
+<p>缺点不利于维护  代码冗余</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;            </span><br><span class="line">    <span class="keyword">return</span> &#123;                              </span><br><span class="line">        timer: <span class="literal">null</span>         </span><br><span class="line">    &#125;        </span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">mouted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.timer = (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">beforeDestroy</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);        </span><br><span class="line">    <span class="built_in">this</span>.timer = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="once-一次性监听器"><a href="#once-一次性监听器" class="headerlink" title="$once 一次性监听器"></a>$once 一次性监听器</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      DateTime: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created () &#123;</span><br><span class="line">    <span class="built_in">this</span>.timeInterval()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    timeInterval () &#123;</span><br><span class="line">      const timer = <span class="built_in">setInterval</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.DateTime = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">      <span class="built_in">this</span>.$once(<span class="string">&#x27;hook:beforeDestroy&#x27;</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>VUE</category>
+      </categories>
+      <tags>
+        <tag>VUE</tag>
+        <tag>setInterval</tag>
       </tags>
   </entry>
   <entry>
@@ -688,7 +698,7 @@
   </entry>
   <entry>
     <title>Steam API Info</title>
-    <url>/2021/01/29/steam-info/</url>
+    <url>/2021/01/29/api/steam-info/</url>
     <content><![CDATA[<h4 id="汇率接口"><a href="#汇率接口" class="headerlink" title="汇率接口"></a>汇率接口</h4><p><a href="https://esapi.isthereanydeal.com/v01/rates/?to=CNY">https://esapi.isthereanydeal.com/v01/rates/?to=CNY</a></p>
 <!--相对于 CNY 的倍率-->
 
