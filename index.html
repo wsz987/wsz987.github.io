@@ -210,6 +210,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/02/02/node/node-express/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/02/node/node-express/" class="post-title-link" itemprop="url">node Express 笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-02 06:26:17 / 修改时间：06:54:49" itemprop="dateCreated datePublished" datetime="2021-02-02T06:26:17+00:00">2021-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/02/02/node/node-express/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/02/02/node/node-express/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="require传参"><a href="#require传参" class="headerlink" title="require传参"></a>require传参</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.params = option = &#123; <span class="attr">view:</span> <span class="string">&#x27;hot&#x27;</span>, <span class="attr">page:</span> <span class="string">&#x27;1&#x27;</span> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.all(<span class="string">&#x27;/view/:view/page/:page&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> <span class="built_in">require</span>(<span class="string">&#x27;.././api/hot&#x27;</span>)(req.params)</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = <span class="function"><span class="params">(option)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option[<span class="string">&#x27;hot&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/02/node/node-express/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/31/bilibili-info/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -233,10 +323,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-31 15:18:23 / 修改时间：15:25:14" itemprop="dateCreated datePublished" datetime="2021-01-31T15:18:23+00:00">2021-01-31</time>
+              <time title="创建时间：2021-01-31 15:18:23" itemprop="dateCreated datePublished" datetime="2021-01-31T15:18:23+00:00">2021-01-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-01 05:13:29" itemprop="dateModified" datetime="2021-02-01T05:13:29+00:00">2021-02-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -272,8 +368,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>搜索接口<br><a target="_blank" rel="noopener" href="https://api.bilibili.com/x/web-interface/search/all/v2?keyword=%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98">https://api.bilibili.com/x/web-interface/search/all/v2?keyword=咒术回战</a></p>
+          <h4 id="搜索结果接口"><a href="#搜索结果接口" class="headerlink" title="搜索结果接口"></a>搜索结果接口</h4><p><a target="_blank" rel="noopener" href="https://api.bilibili.com/x/web-interface/search/all/v2?keyword=%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98&amp;func=suggest">https://api.bilibili.com/x/web-interface/search/all/v2?keyword=咒术回战&amp;func=suggest</a></p>
 <p>[^data.result[3]]: result_type: “media_bangumi “番剧信息<br>[^data.result[3].data[0].eps]: 集数页面地址</p>
+<h4 id="搜索结果预览"><a href="#搜索结果预览" class="headerlink" title="搜索结果预览"></a>搜索结果预览</h4><p><a target="_blank" rel="noopener" href="https://s.search.bilibili.com/main/suggest?term=%E5%A5%BD">https://s.search.bilibili.com/main/suggest?term=好</a></p>
+<p>spid=8 番剧</p>
 
       
     </div>
@@ -1036,100 +1134,6 @@
   
   
   
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/uni/cloudfunctions-DB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.jpg">
-      <meta itemprop="name" content="wsz987">
-      <meta itemprop="description" content="Hello,here is wsz987's blog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsz987">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/uni/cloudfunctions-DB/" class="post-title-link" itemprop="url">云函数 调用 DB 基本方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-30 11:35:23" itemprop="dateCreated datePublished" datetime="2021-01-30T11:35:23+00:00">2021-01-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-31 04:54:35" itemprop="dateModified" datetime="2021-01-31T04:54:35+00:00">2021-01-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/uniCloud/" itemprop="url" rel="index"><span itemprop="name">uniCloud</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/01/30/uni/cloudfunctions-DB/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/30/uni/cloudfunctions-DB/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">exports.main = <span class="keyword">async</span> (<span class="keyword">event</span>, context) =&gt; &#123;</span><br><span class="line">	<span class="comment">//event为客户端上传的参数</span></span><br><span class="line">	console.log(<span class="string">&#x27;event : &#x27;</span>, <span class="keyword">event</span>)</span><br><span class="line">	<span class="comment">// 查 增 改 删</span></span><br><span class="line">	<span class="keyword">const</span> db = uniCloud.database()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">get</span>()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">add</span>(<span class="keyword">event</span>.addData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).update(<span class="keyword">event</span>.changeData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).<span class="keyword">remove</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回数据给客户端</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		data: res,</span><br><span class="line">		code: <span class="number">200</span>,</span><br><span class="line">		msg: <span class="string">&#x27;获取成功!&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/30/uni/cloudfunctions-DB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
   
   <nav class="pagination">
@@ -1201,7 +1205,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1214,7 +1218,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
