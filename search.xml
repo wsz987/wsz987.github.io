@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>bilibili-info</title>
-    <url>/2021/01/31/bilibili-info/</url>
-    <content><![CDATA[<h4 id="搜索结果接口"><a href="#搜索结果接口" class="headerlink" title="搜索结果接口"></a>搜索结果接口</h4><p><a href="https://api.bilibili.com/x/web-interface/search/all/v2?keyword=%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98&amp;func=suggest">https://api.bilibili.com/x/web-interface/search/all/v2?keyword=咒术回战&amp;func=suggest</a></p>
-<p>[^data.result[3]]: result_type: “media_bangumi “番剧信息<br>[^data.result[3].data[0].eps]: 集数页面地址</p>
-<h4 id="搜索结果预览"><a href="#搜索结果预览" class="headerlink" title="搜索结果预览"></a>搜索结果预览</h4><p><a href="https://s.search.bilibili.com/main/suggest?term=%E5%A5%BD">https://s.search.bilibili.com/main/suggest?term=好</a></p>
-<p>spid=8 番剧</p>
-]]></content>
-      <categories>
-        <category>Bilibili</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/01/29/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -64,6 +52,18 @@
         <tag>JavaScript</tag>
         <tag>ES6</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>bilibili-info</title>
+    <url>/2021/01/31/bilibili-info/</url>
+    <content><![CDATA[<h4 id="搜索结果接口"><a href="#搜索结果接口" class="headerlink" title="搜索结果接口"></a>搜索结果接口</h4><p><a href="https://api.bilibili.com/x/web-interface/search/all/v2?keyword=%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98&amp;func=suggest">https://api.bilibili.com/x/web-interface/search/all/v2?keyword=咒术回战&amp;func=suggest</a></p>
+<p>[^data.result[3]]: result_type: “media_bangumi “番剧信息<br>[^data.result[3].data[0].eps]: 集数页面地址</p>
+<h4 id="搜索结果预览"><a href="#搜索结果预览" class="headerlink" title="搜索结果预览"></a>搜索结果预览</h4><p><a href="https://s.search.bilibili.com/main/suggest?term=%E5%A5%BD">https://s.search.bilibili.com/main/suggest?term=好</a></p>
+<p>spid=8 番剧</p>
+]]></content>
+      <categories>
+        <category>Bilibili</category>
+      </categories>
   </entry>
   <entry>
     <title>forEach for...in for...of 遍历</title>
@@ -220,222 +220,6 @@
       </tags>
   </entry>
   <entry>
-    <title>移动端点击300ms解决方案 fastClick</title>
-    <url>/2021/01/31/mobile/fastClick-300ms/</url>
-    <content><![CDATA[<blockquote>
-<p>移动端开发，点击事件会有300ms延迟的问题</p>
-</blockquote>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><a href="https://github.com/ftlabs/fastclick">Github</a></p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> fastclick -S</span><br></pre></td></tr></table></figure>
-<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> FastClick <span class="keyword">from</span> <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(<span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="什么情况不被使用"><a href="#什么情况不被使用" class="headerlink" title="什么情况不被使用"></a>什么情况不被使用</h4><ol>
-<li><p>使用桌面浏览器：FastClick doesn’t attach any listeners on desktop browsers.</p>
-</li>
-<li><p>在安卓 Chrome 32+ 上添加 如下</p>
-<blockquote>
-<p>  <code>width=device-width</code> doesn’t have a 300ms delay, therefore listeners aren’t attached.</p>
-  <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;meta <span class="attribute">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attribute">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-<li><p>安卓上的Chrome (all versions)  <code>&lt;meta&gt;</code> 中带有 <code>user-scalable=no</code></p>
-<blockquote>
-<p>注意 <code>user-scalable=no</code>会禁用捏缩放，这可能是可访问性问题。which may be an accessibility concern.</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="其他使用"><a href="#其他使用" class="headerlink" title="其他使用"></a>其他使用</h4><p>HTML </p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&#x27;application/javascript&#x27;</span> <span class="attr">src</span>=<span class="string">&#x27;/path/to/fastclick.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>推荐使用方法</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;addEventListener&#x27;</span> <span class="keyword">in</span> <span class="built_in">document</span>) &#123;</span><br><span class="line">	<span class="built_in">document</span>.addEventListeneraddEventListener(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">	&#125;, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>jQuery</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><strong>其他工程化项目导入</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> attachFastClick = <span class="built_in">require</span>(<span class="string">&#x27;fastclick&#x27;</span>);</span><br><span class="line">attachFastClick(<span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>移动端</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>uniapp</tag>
-        <tag>fastClick</tag>
-        <tag>移动端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>rem.js 收集 &amp; 媒体查询 @media</title>
-    <url>/2021/01/31/mobile/rem/</url>
-    <content><![CDATA[<blockquote>
-<p>移动开发一般  iPhone6 来设计的   也就是 宽 375px ==750rpx（uniapp）</p>
-<p>项目需衡量用户缩放是为了看到更多的内容 还是看到更大的字体</p>
-<p>pc端使用 需要<code>resize()</code> 包裹<code>rem.js</code>  考虑兼容性问题 </p>
-</blockquote>
-<p><strong>知乎</strong> <a href="https://zhuanlan.zhihu.com/p/269105087">https://zhuanlan.zhihu.com/p/269105087</a> </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  </span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">c, d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> e = <span class="built_in">document</span>.documentElement || <span class="built_in">document</span>.body,</span><br><span class="line">    a = <span class="string">&quot;orientationchange&quot;</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">&quot;orientationchange&quot;</span> : <span class="string">&quot;resize&quot;</span>,</span><br><span class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> f = e.clientWidth;</span><br><span class="line">      e.style.fontSize = f &gt;= <span class="number">750</span> ? <span class="string">&quot;100px&quot;</span> : <span class="number">100</span> * (f / <span class="number">750</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  b();</span><br><span class="line">  c.addEventListener(a, b, <span class="literal">false</span>);</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<p><strong>小米官网写法</strong></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">!function(n)&#123;</span><br><span class="line">    var  <span class="attribute">e</span>=n.document,</span><br><span class="line">         <span class="attribute">t</span>=e.documentElement,</span><br><span class="line">         <span class="attribute">i</span>=720,</span><br><span class="line">         <span class="attribute">d</span>=i/100,</span><br><span class="line">         <span class="attribute">o</span>=<span class="string">&quot;orientationchange&quot;</span>in n?<span class="string">&quot;orientationchange&quot;</span>:<span class="string">&quot;resize&quot;</span>,</span><br><span class="line">         <span class="attribute">a</span>=function()&#123;</span><br><span class="line">             var <span class="attribute">n</span>=t.clientWidth||320;n&gt;720&amp;&amp;(n=720);</span><br><span class="line">             t.style.<span class="attribute">fontSize</span>=n/d+&quot;px&quot;</span><br><span class="line">         &#125;;</span><br><span class="line">         e.addEventListener&amp;&amp;(n.addEventListener(o,a,!1),e.addEventListener(<span class="string">&quot;DOMContentLoaded&quot;</span>,a,!1))</span><br><span class="line">&#125;(window);</span><br></pre></td></tr></table></figure>
-<p><strong>博客源</strong> <a href="https://www.cnblogs.com/xiaomifeng/p/11824600.html">https://www.cnblogs.com/xiaomifeng/p/11824600.html</a></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*720代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是</span></span><br><span class="line"><span class="comment">      为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/</span></span><br><span class="line">    getRem(<span class="number">720</span>,<span class="number">100</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    getRem(<span class="number">720</span>,<span class="number">100</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRem</span>(<span class="params">pwidth,prem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> html = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;html&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> oWidth = <span class="built_in">document</span>.body.clientWidth || <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">    html.style.fontSize = oWidth/pwidth*prem + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">414px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">375px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">320px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>css的<code>calc</code>计算函数</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="built_in">calc</span>(<span class="number">100vw</span>/<span class="number">7.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>移动端</category>
-      </categories>
-      <tags>
-        <tag>移动端</tag>
-        <tag>rem</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>node Express 笔记</title>
-    <url>/2021/02/02/node/Express/</url>
-    <content><![CDATA[<h4 id="require传参"><a href="#require传参" class="headerlink" title="require传参"></a>require传参</h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">req.params = option = &#123; <span class="attr">view:</span> <span class="string">&#x27;hot&#x27;</span>, <span class="attr">page:</span> <span class="string">&#x27;1&#x27;</span> &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">router.all(<span class="string">&#x27;/view/:view/page/:page&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> <span class="built_in">require</span>(<span class="string">&#x27;.././api/hot&#x27;</span>)(req.params)</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = <span class="function"><span class="params">(option)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option[<span class="string">&#x27;hot&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="json-和-send"><a href="#json-和-send" class="headerlink" title=".json() 和 .send()"></a>.json() 和 .send()</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">res</span><span class="selector-class">.json</span>() </span><br><span class="line"><span class="selector-tag">res</span><span class="selector-class">.send</span>(<span class="selector-tag">JSON</span><span class="selector-class">.stringify</span>(<span class="selector-tag">data</span>))</span><br></pre></td></tr></table></figure>
-<h4 id="params-和-query"><a href="#params-和-query" class="headerlink" title="params 和 query"></a>params 和 query</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/api/view/hot?page=2</span></span><br><span class="line"></span><br><span class="line">router.all(<span class="string">&#x27;/view/:view/&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> <span class="built_in">require</span>(<span class="string">&#x27;.././api/hot&#x27;</span>)(req.params,req.query)</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = <span class="function"><span class="params">(params,query)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(params,query);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><blockquote>
-<p>next() 放行 再执行其他操作等</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.use(<span class="built_in">require</span>(<span class="string">&#x27;./logger&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;wsz987&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`method: <span class="subst">$&#123;req.method&#125;</span>,url: <span class="subst">$&#123;req.url&#125;</span>`</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="路由分级写法"><a href="#路由分级写法" class="headerlink" title="路由分级写法"></a>路由分级写法</h4><blockquote>
-<p>传统</p>
-</blockquote>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/api/index&#x27;</span>, <span class="function"><span class="params">(req, res)</span> =&gt;</span> &#123;</span><br><span class="line">    res.send()</span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">&#x27;/api/view&#x27;</span>, <span class="function"><span class="params">(req, res)</span> =&gt;</span> &#123;</span><br><span class="line">    res.send()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>等效</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">app.<span class="keyword">use</span>(<span class="string">&#x27;/api&#x27;</span>,<span class="keyword">require</span>(<span class="string">&#x27;./router/router&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">router.all(<span class="string">&#x27;/index&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> require(<span class="string">&#x27;.././api/index&#x27;</span>)</span><br><span class="line">    res.status(<span class="number">200</span>).json(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.<span class="keyword">get</span>(<span class="string">&#x27;/view&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">&#x27;66&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>Express</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node基础及跨域配置</title>
-    <url>/2021/01/30/node/Node-Allow-Origin/</url>
-    <content><![CDATA[<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="跨域配置"><a href="#跨域配置" class="headerlink" title="跨域配置"></a>跨域配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.all(<span class="string">&#x27;*&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const register = <span class="built_in">require</span>(<span class="string">&#x27;./api/register&#x27;</span>);</span><br><span class="line">const login = <span class="built_in">require</span>(<span class="string">&#x27;./api/login&#x27;</span>);</span><br><span class="line">const getValue = <span class="built_in">require</span>(<span class="string">&#x27;./api/getValue&#x27;</span>);</span><br><span class="line">app.post(<span class="string">&#x27;/user/regist&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> register(req, res));</span><br><span class="line">app.post(<span class="string">&#x27;/user/login&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> login(req, res));</span><br><span class="line">app.get(<span class="string">&#x27;/getValue&#x27;</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span> getValue(req,res));</span><br></pre></td></tr></table></figure>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = <span class="number">81</span></span><br><span class="line">app.listen(port, hostName, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node 镶嵌MQTT及前端WebSocket通讯</title>
-    <url>/2021/01/30/node/Node-MQTT-WebSocket/</url>
-    <content><![CDATA[<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>Mosca 为 消息缓存 及 MQTT消息–主题订阅相互配对 的中转服务器<br>MQTT 分为 发布端 和 订阅端  与传统http 三次握手不一样<br>MQTT 只需在连接之初向服务器订阅相关的主题 则可以实现消息的持续接收 在效率，数据响应方面便捷于传统请求<br>MQTT 多用于工业 后端 与 硬件设备、总控间的实时通讯协议<br>前端无法直接使用 MQTT 与后端进行数据交互 实际使用为 websocket 协议</p>
-<h4 id="搭建-Mosca-服务端"><a href="#搭建-Mosca-服务端" class="headerlink" title="搭建 Mosca 服务端"></a>搭建 Mosca 服务端</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mosca <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-<h4 id="安装MQTT-前端同样安装"><a href="#安装MQTT-前端同样安装" class="headerlink" title="安装MQTT  /  前端同样安装"></a>安装MQTT  /  前端同样安装</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mqtt <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-<h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><p><a href="https://mqttx.app/cn/">MQTTX</a></p>
-<a id="more"></a>
-
-<h4 id="Mosca-及-published-镶嵌到app-js"><a href="#Mosca-及-published-镶嵌到app-js" class="headerlink" title="Mosca 及 published 镶嵌到app.js"></a>Mosca 及 published 镶嵌到app.js</h4><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mosca=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/server&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">published</span>=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/published&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h4><blockquote>
-<p>[^port]: 为MQTT端口  接口示例 mqtt://127.0.0.1:1883<br>[^http]: 因为前端无法直接与MQTT连接 需要另外配置http端口  实则websocket协议</p>
-<blockquote>
-<p>接口示例 ws://127.0.0.1:1884</p>
-</blockquote>
-<p><code>user</code> <code>password</code>配置 配合前端连接</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mosca = <span class="built_in">require</span>(<span class="string">&#x27;mosca&#x27;</span>); </span><br><span class="line"><span class="comment">//构建自带服务器  1833 为mqtt 1884 为前端websocket通讯端口  前端无法直接使用mqtt</span></span><br><span class="line"><span class="keyword">const</span> MqttServer = <span class="keyword">new</span> mosca.Server(&#123;</span><br><span class="line">    port: <span class="number">1883</span>,</span><br><span class="line">    http: &#123;</span><br><span class="line">        port: <span class="number">1884</span>,</span><br><span class="line">        bundle: <span class="literal">true</span>,</span><br><span class="line">        <span class="keyword">static</span>: <span class="string">&#x27;./&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    user:<span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    password :<span class="string">&#x27;123456&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//对服务器端口进行配置， 在此端口进行监听</span></span><br><span class="line">MqttServer.on(<span class="string">&#x27;clientConnected&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">client</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//监听连接</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;client connected&#x27;</span>, client.id);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">MqttServer.on(<span class="string">&#x27;ready&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当服务开启时</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Mosca server is running...&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = MqttServer</span><br></pre></td></tr></table></figure>
-<h4 id="推送端示例"><a href="#推送端示例" class="headerlink" title="推送端示例"></a>推送端示例</h4><blockquote>
-<p>注意推送内容需要<code>JSON.stringify()</code></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.on(<span class="string">&#x27;published&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">packet, client</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Published&#x27;</span>, packet.payload);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="published-js"><a href="#published-js" class="headerlink" title="published.js"></a>published.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mqtt = <span class="built_in">require</span>(<span class="string">&#x27;mqtt&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> MqttServer = <span class="built_in">require</span>(<span class="string">&#x27;./server&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> client1 = mqtt.connect(<span class="string">&#x27;mqtt://127.0.0.1:1883&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> state1=<span class="number">1</span>,state2=<span class="number">1</span>  <span class="comment">//设备状态码存储</span></span><br><span class="line">MqttServer.on(<span class="string">&#x27;published&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">packet, client</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当客户端有连接发布主题消息</span></span><br><span class="line">    <span class="keyword">var</span> topic = packet.topic;</span><br><span class="line">    <span class="built_in">console</span>.log(packet.payload);</span><br><span class="line">    <span class="comment">// 前端启动开始数据推送  频率</span></span><br><span class="line">    <span class="keyword">switch</span> (topic) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;lightState&#x27;</span>:</span><br><span class="line">            <span class="comment">//硬件 灯控制</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;lightState&#x27;</span>, packet.payload.toString());</span><br><span class="line">            client1.publish(<span class="string">&#x27;isLight&#x27;</span>, <span class="built_in">JSON</span>.stringify(<span class="literal">false</span>), &#123; <span class="attr">qos</span>: <span class="number">0</span>, <span class="attr">retain</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;runState&#x27;</span>:</span><br><span class="line">            <span class="comment">// 设备状态改变 同步</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;runState&#x27;</span>,<span class="built_in">JSON</span>.parse(packet.payload));</span><br><span class="line">            client1.publish(<span class="string">&#x27;isRun&#x27;</span>, <span class="string">`[<span class="subst">$&#123;state1&#125;</span>,<span class="subst">$&#123;state2&#125;</span>]`</span>, &#123; <span class="attr">qos</span>: <span class="number">0</span>, <span class="attr">retain</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="订阅端"><a href="#订阅端" class="headerlink" title="订阅端"></a>订阅端</h4><blockquote>
-<p>Node</p>
-<blockquote>
-<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">client</span>  = mqtt.connect(<span class="string">&#x27;mqtt://127.0.0.1:1883&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><strong>前端</strong></p>
-<blockquote>
-</blockquote>
-<blockquote>
-<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mqtt = require(<span class="string">&#x27;mqtt&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">client</span> = mqtt.connect(<span class="string">&#x27;ws://127.0.0.1:1884&#x27;</span>, &#123;</span><br><span class="line">      username: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">      password: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">      connectTimeout: <span class="number">4000</span>,</span><br><span class="line">      reconnectPeriod: <span class="number">0</span>,</span><br><span class="line">      clientId: <span class="string">&#x27;Demo_vue&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>挂载全局</p>
-</blockquote>
-<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">import Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">Vue.prototype.$<span class="keyword">client</span> = <span class="keyword">client</span></span><br></pre></td></tr></table></figure>
-
-</blockquote>
-<p><strong>subscribe() 订阅主题</strong></p>
-<p><strong>publish() 消息发布</strong></p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.$client.on(<span class="string">&#x27;connect&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.$client.subscribe([<span class="string">&#x27;lightState&#x27;</span>，<span class="string">&#x27;runState&#x27;</span>])</span><br><span class="line">  <span class="built_in">this</span>.$client.publish(<span class="string">&#x27;State1&#x27;</span>, <span class="string">&#x27;AT*GPO=1,0#&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">this</span>.$client.on(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">topic, message</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">switch</span> (topic) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;isRun&#x27;</span>:</span><br><span class="line">          <span class="comment">// console.log(&#x27;subMqtt -&gt; message -&gt; isRun&#x27;, JSON.parse(message))</span></span><br><span class="line">         <span class="keyword">break</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>MQTT</tag>
-        <tag>WebSocket</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node MySQL配置及登录注册接口实例</title>
-    <url>/2021/01/30/node/Node-MySQL/</url>
-    <content><![CDATA[<h4 id="安装MySQL依赖"><a href="#安装MySQL依赖" class="headerlink" title="安装MySQL依赖"></a>安装MySQL依赖</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
-</blockquote>
-<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="login-js"><a href="#login-js" class="headerlink" title="login.js"></a>login.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;login -&gt; param&quot;</span>, param)</span><br><span class="line">    <span class="keyword">let</span> username = param.username;</span><br><span class="line">    <span class="keyword">let</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查询数据库中是否有用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有用户名，查询密码是否相同</span></span><br><span class="line">                <span class="keyword">if</span>(password == results[<span class="number">0</span>].password)&#123;</span><br><span class="line">                    <span class="comment">//3、密码相同则登陆成功</span></span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;登陆成功&#x27;</span>,<span class="number">200</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，密码错误&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，没有此用户名&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，用户名或密码不能为空&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = login;</span><br></pre></td></tr></table></figure>
-<h4 id="register-js"><a href="#register-js" class="headerlink" title="register.js"></a>register.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> param = req.body;</span><br><span class="line">    <span class="keyword">const</span> username = param.username;</span><br><span class="line">    <span class="keyword">const</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查看数据库中是否有相同用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有相同用户名，则注册失败，用户名重复</span></span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名重复&#x27;</span>,<span class="number">422</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(<span class="string">&quot;INSERT INTO user(username,password) VALUES(?,?)&quot;</span>, [username,password],<span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">                    <span class="comment">//3、如果没有相同用户名，并且有一条记录，则注册成功</span></span><br><span class="line">                    <span class="keyword">if</span>(results.affectedRows==<span class="number">1</span>)&#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;注册成功&#x27;</span>,<span class="number">201</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名、密码不能为空&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = register;</span><br></pre></td></tr></table></figure>
-<h4 id="response-js-封装"><a href="#response-js-封装" class="headerlink" title="response.js 封装"></a>response.js 封装</h4><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(success,msg,code,result)&#123;</span><br><span class="line">       <span class="keyword">this</span>.success = success;</span><br><span class="line">       <span class="keyword">this</span>.msg = msg;</span><br><span class="line">       <span class="keyword">this</span>.code = code;</span><br><span class="line">       <span class="keyword">this</span>.result = result;</span><br><span class="line">       <span class="keyword">this</span>.<span class="keyword">data</span>=<span class="string">&#x27;666&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Response;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node 实用Tools</title>
-    <url>/2021/02/02/node/Node-Tools/</url>
-    <content><![CDATA[<h4 id="PM2-进程管理"><a href="#PM2-进程管理" class="headerlink" title="PM2  进程管理"></a><a href="https://github.com/Unitech/pm2">PM2 </a> 进程管理</h4><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">npm</span> install pm<span class="number">2</span> -g</span><br></pre></td></tr></table></figure>
-<p><strong>常用命令</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">pm2 start app.js</span><br><span class="line">pm2 list</span><br><span class="line">$ pm2 stop     &lt;app_name|<span class="keyword">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br><span class="line">$ <span class="symbol">pm2</span> <span class="symbol">restart</span>  &lt;<span class="symbol">app_name</span>|<span class="symbol">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br><span class="line">$ <span class="symbol">pm2</span> <span class="symbol">delete</span>   &lt;<span class="symbol">app_name</span>|<span class="symbol">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="Nodemon-热更新"><a href="#Nodemon-热更新" class="headerlink" title="Nodemon 热更新"></a><a href="https://github.com/remy/nodemon">Nodemon</a> 热更新</h4><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g nodemon</span><br><span class="line">npm <span class="keyword">install</span> --save-dev nodemon</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nodemon</span> <span class="selector-tag">app</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>PM2</tag>
-        <tag>Nodemon</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>饰品筛选倒余额脚本</title>
     <url>/2021/01/29/script/SteamBuff_Market-WalletBalance/</url>
     <content><![CDATA[<h5 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h5><blockquote>
@@ -538,6 +322,50 @@
       </tags>
   </entry>
   <entry>
+    <title>移动端点击300ms解决方案 fastClick</title>
+    <url>/2021/01/31/mobile/fastClick-300ms/</url>
+    <content><![CDATA[<blockquote>
+<p>移动端开发，点击事件会有300ms延迟的问题</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><a href="https://github.com/ftlabs/fastclick">Github</a></p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> fastclick -S</span><br></pre></td></tr></table></figure>
+<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> FastClick <span class="keyword">from</span> <span class="string">&#x27;fastclick&#x27;</span>;</span><br><span class="line">FastClick.attach(<span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="什么情况不被使用"><a href="#什么情况不被使用" class="headerlink" title="什么情况不被使用"></a>什么情况不被使用</h4><ol>
+<li><p>使用桌面浏览器：FastClick doesn’t attach any listeners on desktop browsers.</p>
+</li>
+<li><p>在安卓 Chrome 32+ 上添加 如下</p>
+<blockquote>
+<p>  <code>width=device-width</code> doesn’t have a 300ms delay, therefore listeners aren’t attached.</p>
+  <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;meta <span class="attribute">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attribute">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li><p>安卓上的Chrome (all versions)  <code>&lt;meta&gt;</code> 中带有 <code>user-scalable=no</code></p>
+<blockquote>
+<p>注意 <code>user-scalable=no</code>会禁用捏缩放，这可能是可访问性问题。which may be an accessibility concern.</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="其他使用"><a href="#其他使用" class="headerlink" title="其他使用"></a>其他使用</h4><p>HTML </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&#x27;application/javascript&#x27;</span> <span class="attr">src</span>=<span class="string">&#x27;/path/to/fastclick.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>推荐使用方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;addEventListener&#x27;</span> <span class="keyword">in</span> <span class="built_in">document</span>) &#123;</span><br><span class="line">	<span class="built_in">document</span>.addEventListeneraddEventListener(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">	&#125;, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>jQuery</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>其他工程化项目导入</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> attachFastClick = <span class="built_in">require</span>(<span class="string">&#x27;fastclick&#x27;</span>);</span><br><span class="line">attachFastClick(<span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>移动端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>uniapp</tag>
+        <tag>fastClick</tag>
+        <tag>移动端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Steam商店便捷按钮脚本</title>
     <url>/2021/01/30/script/SteamStoreToolsBtn/</url>
     <content><![CDATA[<blockquote>
@@ -583,6 +411,33 @@
       </tags>
   </entry>
   <entry>
+    <title>rem.js 收集 &amp; 媒体查询 @media</title>
+    <url>/2021/01/31/mobile/rem/</url>
+    <content><![CDATA[<blockquote>
+<p>移动开发一般  iPhone6 来设计的   也就是 宽 375px ==750rpx（uniapp）</p>
+<p>项目需衡量用户缩放是为了看到更多的内容 还是看到更大的字体</p>
+<p>pc端使用 需要<code>resize()</code> 包裹<code>rem.js</code>  考虑兼容性问题 </p>
+</blockquote>
+<p><strong>知乎</strong> <a href="https://zhuanlan.zhihu.com/p/269105087">https://zhuanlan.zhihu.com/p/269105087</a> </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  </span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">c, d</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> e = <span class="built_in">document</span>.documentElement || <span class="built_in">document</span>.body,</span><br><span class="line">    a = <span class="string">&quot;orientationchange&quot;</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">&quot;orientationchange&quot;</span> : <span class="string">&quot;resize&quot;</span>,</span><br><span class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> f = e.clientWidth;</span><br><span class="line">      e.style.fontSize = f &gt;= <span class="number">750</span> ? <span class="string">&quot;100px&quot;</span> : <span class="number">100</span> * (f / <span class="number">750</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  b();</span><br><span class="line">  c.addEventListener(a, b, <span class="literal">false</span>);</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p><strong>小米官网写法</strong></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">!function(n)&#123;</span><br><span class="line">    var  <span class="attribute">e</span>=n.document,</span><br><span class="line">         <span class="attribute">t</span>=e.documentElement,</span><br><span class="line">         <span class="attribute">i</span>=720,</span><br><span class="line">         <span class="attribute">d</span>=i/100,</span><br><span class="line">         <span class="attribute">o</span>=<span class="string">&quot;orientationchange&quot;</span>in n?<span class="string">&quot;orientationchange&quot;</span>:<span class="string">&quot;resize&quot;</span>,</span><br><span class="line">         <span class="attribute">a</span>=function()&#123;</span><br><span class="line">             var <span class="attribute">n</span>=t.clientWidth||320;n&gt;720&amp;&amp;(n=720);</span><br><span class="line">             t.style.<span class="attribute">fontSize</span>=n/d+&quot;px&quot;</span><br><span class="line">         &#125;;</span><br><span class="line">         e.addEventListener&amp;&amp;(n.addEventListener(o,a,!1),e.addEventListener(<span class="string">&quot;DOMContentLoaded&quot;</span>,a,!1))</span><br><span class="line">&#125;(window);</span><br></pre></td></tr></table></figure>
+<p><strong>博客源</strong> <a href="https://www.cnblogs.com/xiaomifeng/p/11824600.html">https://www.cnblogs.com/xiaomifeng/p/11824600.html</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*720代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是</span></span><br><span class="line"><span class="comment">      为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/</span></span><br><span class="line">    getRem(<span class="number">720</span>,<span class="number">100</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    getRem(<span class="number">720</span>,<span class="number">100</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRem</span>(<span class="params">pwidth,prem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> html = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;html&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> oWidth = <span class="built_in">document</span>.body.clientWidth || <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">    html.style.fontSize = oWidth/pwidth*prem + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">414px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">375px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">320px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>css的<code>calc</code>计算函数</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="built_in">calc</span>(<span class="number">100vw</span>/<span class="number">7.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>移动端</category>
+      </categories>
+      <tags>
+        <tag>移动端</tag>
+        <tag>rem</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>云函数 调用 DB 基本方法</title>
     <url>/2021/01/30/uni/cloudfunctions-DB/</url>
     <content><![CDATA[<h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">exports.main = <span class="keyword">async</span> (<span class="keyword">event</span>, context) =&gt; &#123;</span><br><span class="line">	<span class="comment">//event为客户端上传的参数</span></span><br><span class="line">	console.log(<span class="string">&#x27;event : &#x27;</span>, <span class="keyword">event</span>)</span><br><span class="line">	<span class="comment">// 查 增 改 删</span></span><br><span class="line">	<span class="keyword">const</span> db = uniCloud.database()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">get</span>()</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).<span class="keyword">add</span>(<span class="keyword">event</span>.addData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).update(<span class="keyword">event</span>.changeData)</span><br><span class="line">	<span class="keyword">const</span> &#123; data: res &#125; = <span class="keyword">await</span> db.collection(<span class="keyword">event</span>.table).doc(<span class="keyword">event</span>.id).<span class="keyword">remove</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回数据给客户端</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		data: res,</span><br><span class="line">		code: <span class="number">200</span>,</span><br><span class="line">		msg: <span class="string">&#x27;获取成功!&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -598,6 +453,26 @@
       <tags>
         <tag>uniapp</tag>
         <tag>unicloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node基础及跨域配置</title>
+    <url>/2021/01/30/node/Node-Allow-Origin/</url>
+    <content><![CDATA[<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="跨域配置"><a href="#跨域配置" class="headerlink" title="跨域配置"></a>跨域配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.all(<span class="string">&#x27;*&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const register = <span class="built_in">require</span>(<span class="string">&#x27;./api/register&#x27;</span>);</span><br><span class="line">const login = <span class="built_in">require</span>(<span class="string">&#x27;./api/login&#x27;</span>);</span><br><span class="line">const getValue = <span class="built_in">require</span>(<span class="string">&#x27;./api/getValue&#x27;</span>);</span><br><span class="line">app.post(<span class="string">&#x27;/user/regist&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> register(req, res));</span><br><span class="line">app.post(<span class="string">&#x27;/user/login&#x27;</span>,<span class="function"><span class="params">(req, res)</span>=&gt;</span> login(req, res));</span><br><span class="line">app.get(<span class="string">&#x27;/getValue&#x27;</span>,<span class="function"><span class="params">(req,res)</span>=&gt;</span> getValue(req,res));</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = <span class="number">81</span></span><br><span class="line">app.listen(port, hostName, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>跨域</tag>
       </tags>
   </entry>
   <entry>
@@ -620,6 +495,224 @@
       <tags>
         <tag>uniapp</tag>
         <tag>unicloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>node Express 笔记</title>
+    <url>/2021/02/02/node/Express/</url>
+    <content><![CDATA[<h4 id="require传参"><a href="#require传参" class="headerlink" title="require传参"></a>require传参</h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">req.params = option = &#123; <span class="attr">view:</span> <span class="string">&#x27;hot&#x27;</span>, <span class="attr">page:</span> <span class="string">&#x27;1&#x27;</span> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">router.all(<span class="string">&#x27;/view/:view/page/:page&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> <span class="built_in">require</span>(<span class="string">&#x27;.././api/hot&#x27;</span>)(req.params)</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = <span class="function"><span class="params">(option)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option[<span class="string">&#x27;hot&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="json-和-send"><a href="#json-和-send" class="headerlink" title=".json() 和 .send()"></a>.json() 和 .send()</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">res</span><span class="selector-class">.json</span>() </span><br><span class="line"><span class="selector-tag">res</span><span class="selector-class">.send</span>(<span class="selector-tag">JSON</span><span class="selector-class">.stringify</span>(<span class="selector-tag">data</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="params-和-query"><a href="#params-和-query" class="headerlink" title="params 和 query"></a>params 和 query</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/api/view/hot?page=2</span></span><br><span class="line"></span><br><span class="line">router.all(<span class="string">&#x27;/view/:view/&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> <span class="built_in">require</span>(<span class="string">&#x27;.././api/hot&#x27;</span>)(req.params,req.query)</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = <span class="function"><span class="params">(params,query)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(params,query);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><blockquote>
+<p>next() 放行 再执行其他操作等</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.use(<span class="built_in">require</span>(<span class="string">&#x27;./logger&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;wsz987&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`method: <span class="subst">$&#123;req.method&#125;</span>,url: <span class="subst">$&#123;req.url&#125;</span>`</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="路由分级写法"><a href="#路由分级写法" class="headerlink" title="路由分级写法"></a>路由分级写法</h4><blockquote>
+<p>传统</p>
+</blockquote>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/api/index&#x27;</span>, <span class="function"><span class="params">(req, res)</span> =&gt;</span> &#123;</span><br><span class="line">    res.send()</span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">&#x27;/api/view&#x27;</span>, <span class="function"><span class="params">(req, res)</span> =&gt;</span> &#123;</span><br><span class="line">    res.send()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>等效</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">app.<span class="keyword">use</span>(<span class="string">&#x27;/api&#x27;</span>,<span class="keyword">require</span>(<span class="string">&#x27;./router/router&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">router.all(<span class="string">&#x27;/index&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data= <span class="keyword">await</span> require(<span class="string">&#x27;.././api/index&#x27;</span>)</span><br><span class="line">    res.status(<span class="number">200</span>).json(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.<span class="keyword">get</span>(<span class="string">&#x27;/view&#x27;</span>,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">&#x27;66&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>Express</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node Cheerio-Superagent keylol论坛数据抓取</title>
+    <url>/2021/02/04/node/Node-Cheerio/</url>
+    <content><![CDATA[<blockquote>
+<p>数据抓取基于 <a href="https://keylol.com/forum.php?m=index&mobile=2">keylol 移动端</a> 页面   </p>
+<p><strong>不涉及任何权限帖子 &amp; 版块内容</strong>  单纯列表抓取 不抓取任何帖子内容 – 其实我不会φ(*￣0￣) 守株待兔逮个大佬</p>
+<blockquote>
+<p>接口基于对应请求 <strong>一对一页面抓取</strong>  不会对论坛服务器照成负载  <strong>但请不要 频繁 &amp; ‘’过分’’ 请求造成 论坛502</strong></p>
+</blockquote>
+<p><strong>此仓仅供学习</strong> 意在提供现成API辅助前端开发 – 实际Node小白 这接口顶多做个列表数据渲染</p>
+<p>请勿恶意使用 如有侵权   请联系论坛ID: wsz987 – Github这边不常看</p>
+<p>♥ GAY坛    <a href="https://github.com/wsz987/KeylolDataAPI">Github</a></p>
+</blockquote>
+<h4 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h4><ul>
+<li><a href="https://www.expressjs.com.cn/">Express框架</a></li>
+<li><a href="https://github.com/cheeriojs/cheerio/wiki/Chinese-README">Cheerio中文</a></li>
+<li><a href="https://www.npmjs.com/package/superagent">Superagent</a></li>
+</ul>
+<a id="more"></a>
+<h4 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h4><figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">npm</span> i || <span class="built_in">npm</span> install</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">node</span> <span class="title">app</span></span><br><span class="line">// 热更新模式 </span><br><span class="line">nodemon app</span><br></pre></td></tr></table></figure>
+<h4 id="端口配置"><a href="#端口配置" class="headerlink" title="端口配置"></a>端口配置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hostName = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="keyword">var</span> port = process.env.PORT || <span class="number">80</span></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostName&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">├─.gitignore</span><br><span class="line">├─app.js        <span class="regexp">//</span> 启动文件</span><br><span class="line">├─logger.js     <span class="regexp">//</span> 日志打印 mothod &amp; url</span><br><span class="line">├─package-lock.json       </span><br><span class="line">├─package.json</span><br><span class="line">├─src           <span class="regexp">//</span> 静态文件 版块列表JSON </span><br><span class="line">|  └forumlist.json        </span><br><span class="line">├─router        <span class="regexp">//</span> 路由</span><br><span class="line">|   └router.js</span><br><span class="line">├─api           <span class="regexp">//</span> 爬虫脚本</span><br><span class="line">|  ├─forumlist.js            <span class="regexp">//</span> 论坛非权限版块列表 (固定内容不需要频繁抓取)</span><br><span class="line">|  ├─index.js                <span class="regexp">//</span> 主页内容</span><br><span class="line">|  ├─post.js                 <span class="regexp">//</span> 帖子内容 (只有结构 无抓取代码 已声明不做任何抓取--实际不会 抓取效果不好)</span><br><span class="line">|  ├─readFile_forumlist.js   <span class="regexp">//</span> 读取静态文件 版块列表JSON </span><br><span class="line">|  ├─subtypes.js             <span class="regexp">//</span> 版块内容列表</span><br><span class="line">|  └─view.js                 <span class="regexp">//</span> 导读版块 tabBar列表</span><br></pre></td></tr></table></figure>
+<h4 id="请求头注意项"><a href="#请求头注意项" class="headerlink" title="请求头注意项"></a>请求头注意项</h4><figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">&#x27;user-agent</span><span class="symbol">&#x27;:</span> <span class="symbol">&#x27;Mozilla/5.0</span> (<span class="name">iPhone</span><span class="comment">; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="版块列表-默认返回静态JSON"><a href="#版块列表-默认返回静态JSON" class="headerlink" title="版块列表 默认返回静态JSON"></a>版块列表 默认返回静态JSON</h4><p><strong>app.js</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版块列表</span></span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">&#x27;/api/forumlist/&#x27;</span>,express.<span class="built_in">static</span>(<span class="string">&#x27;./src/forumlist.json&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p><strong>router.js</strong></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> 版块列表</span><br><span class="line"><span class="regexp">//</span> router.all(<span class="string">&#x27;/forumlist&#x27;</span>, async (req, res) =&gt; &#123;</span><br><span class="line">    <span class="regexp">//</span>数据抓取 JSON写入</span><br><span class="line">    <span class="regexp">//</span> const data = await require(<span class="string">&#x27;../api/forumlist&#x27;</span>)</span><br><span class="line">    <span class="regexp">//</span>JSON 读取</span><br><span class="line">    <span class="regexp">//</span> const data = await require(<span class="string">&#x27;../api/readFile_forumlist&#x27;</span>)</span><br><span class="line">    <span class="regexp">//</span> res.json(data)</span><br><span class="line"><span class="regexp">//</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="接口参数"><a href="#接口参数" class="headerlink" title="接口参数"></a>接口参数</h4><blockquote>
+<p>后端不做限制 API请求 router.all()</p>
+</blockquote>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">app.<span class="keyword">all</span>(<span class="string">&#x27;*&#x27;</span>, <span class="keyword">function</span> (req, res, next) &#123;</span><br><span class="line">    res.<span class="keyword">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    res.<span class="keyword">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Origin, X-Requested-With, Content-Type, Accept&#x27;</span>)</span><br><span class="line">    res.<span class="keyword">header</span>(<span class="string">&#x27;Access-Control-Allow-Metheds&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">    res.<span class="keyword">header</span>(<span class="string">&#x27;X-Powered-By&#x27;</span>, <span class="string">&#x27;nodejs&#x27;</span>)</span><br><span class="line">    res.<span class="keyword">header</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="接口路径"><a href="#接口路径" class="headerlink" title="接口路径"></a>接口路径</h4><blockquote>
+<p><a href="https://keylol.com/forum.php?m=index&mobile=2"><strong>主页</strong></a> (无参)</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/api/i</span>ndex</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://keylol.com/forum.php?mod=guide&view=hot&mobile=2"><strong>导读</strong></a></p>
+<p>最新热门; hot</p>
+<p>最新精华: digest</p>
+<p>最新发表: newthread</p>
+<p>最新回复: new</p>
+<p>最新沙发: sofa</p>
+<p><code>page</code> 不带的话默认第一页</p>
+</blockquote>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">/api/<span class="meta">view</span>/:<span class="meta">view</span>?<span class="meta">page</span>=1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://keylol.com/forum.php?forumlist=1&mobile=2"><strong>版块列表</strong></a> (无参)</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/api/</span>forumlist</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>帖子</strong>  (只是有个路径) 例: t682753-1-1</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/api/</span>post/:t</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://keylol.com/f148-1"><strong>版块内容列表</strong></a></p>
+<p><code>fid</code>  支持俩格式  <code>/api/subtypes/f123-1</code>  <strong>等效</strong>于 <code>/api/subtypes/123?page=1</code></p>
+<p><code>typeid</code> 分类  <strong>默认不带 = 返回全部内容</strong>  ( 参见接口返回<code>subtypes</code>信息 )</p>
+<p><code>page</code> 默认第一页</p>
+</blockquote>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="meta-keyword">/api/</span>subtypes/:fid?typeid=<span class="variable">&amp;page</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"><span class="symbol">    subtypes:</span> [],</span><br><span class="line"><span class="symbol">    threadlist:</span> []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="其他详细信息请查看返回JSON-无状态码返回-默认-status-200"><a href="#其他详细信息请查看返回JSON-无状态码返回-默认-status-200" class="headerlink" title="其他详细信息请查看返回JSON 无状态码返回 默认 status=200"></a>其他详细信息请查看返回JSON 无状态码返回 默认 status=200</h4>]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>Express</tag>
+        <tag>Cheerio</tag>
+        <tag>Superagent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node 镶嵌MQTT及前端WebSocket通讯</title>
+    <url>/2021/01/30/node/Node-MQTT-WebSocket/</url>
+    <content><![CDATA[<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>Mosca 为 消息缓存 及 MQTT消息–主题订阅相互配对 的中转服务器<br>MQTT 分为 发布端 和 订阅端  与传统http 三次握手不一样<br>MQTT 只需在连接之初向服务器订阅相关的主题 则可以实现消息的持续接收 在效率，数据响应方面便捷于传统请求<br>MQTT 多用于工业 后端 与 硬件设备、总控间的实时通讯协议<br>前端无法直接使用 MQTT 与后端进行数据交互 实际使用为 websocket 协议</p>
+<h4 id="搭建-Mosca-服务端"><a href="#搭建-Mosca-服务端" class="headerlink" title="搭建 Mosca 服务端"></a>搭建 Mosca 服务端</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mosca <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装MQTT-前端同样安装"><a href="#安装MQTT-前端同样安装" class="headerlink" title="安装MQTT  /  前端同样安装"></a>安装MQTT  /  前端同样安装</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mqtt <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><p><a href="https://mqttx.app/cn/">MQTTX</a></p>
+<a id="more"></a>
+
+<h4 id="Mosca-及-published-镶嵌到app-js"><a href="#Mosca-及-published-镶嵌到app-js" class="headerlink" title="Mosca 及 published 镶嵌到app.js"></a>Mosca 及 published 镶嵌到app.js</h4><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mosca=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/server&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">published</span>=<span class="keyword">require</span>(<span class="string">&#x27;./mqtt/published&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h4><blockquote>
+<p>[^port]: 为MQTT端口  接口示例 mqtt://127.0.0.1:1883<br>[^http]: 因为前端无法直接与MQTT连接 需要另外配置http端口  实则websocket协议</p>
+<blockquote>
+<p>接口示例 ws://127.0.0.1:1884</p>
+</blockquote>
+<p><code>user</code> <code>password</code>配置 配合前端连接</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mosca = <span class="built_in">require</span>(<span class="string">&#x27;mosca&#x27;</span>); </span><br><span class="line"><span class="comment">//构建自带服务器  1833 为mqtt 1884 为前端websocket通讯端口  前端无法直接使用mqtt</span></span><br><span class="line"><span class="keyword">const</span> MqttServer = <span class="keyword">new</span> mosca.Server(&#123;</span><br><span class="line">    port: <span class="number">1883</span>,</span><br><span class="line">    http: &#123;</span><br><span class="line">        port: <span class="number">1884</span>,</span><br><span class="line">        bundle: <span class="literal">true</span>,</span><br><span class="line">        <span class="keyword">static</span>: <span class="string">&#x27;./&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    user:<span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    password :<span class="string">&#x27;123456&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//对服务器端口进行配置， 在此端口进行监听</span></span><br><span class="line">MqttServer.on(<span class="string">&#x27;clientConnected&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">client</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//监听连接</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;client connected&#x27;</span>, client.id);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">MqttServer.on(<span class="string">&#x27;ready&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当服务开启时</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Mosca server is running...&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = MqttServer</span><br></pre></td></tr></table></figure>
+<h4 id="推送端示例"><a href="#推送端示例" class="headerlink" title="推送端示例"></a>推送端示例</h4><blockquote>
+<p>注意推送内容需要<code>JSON.stringify()</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.on(<span class="string">&#x27;published&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">packet, client</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Published&#x27;</span>, packet.payload);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="published-js"><a href="#published-js" class="headerlink" title="published.js"></a>published.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mqtt = <span class="built_in">require</span>(<span class="string">&#x27;mqtt&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> MqttServer = <span class="built_in">require</span>(<span class="string">&#x27;./server&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> client1 = mqtt.connect(<span class="string">&#x27;mqtt://127.0.0.1:1883&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> state1=<span class="number">1</span>,state2=<span class="number">1</span>  <span class="comment">//设备状态码存储</span></span><br><span class="line">MqttServer.on(<span class="string">&#x27;published&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">packet, client</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当客户端有连接发布主题消息</span></span><br><span class="line">    <span class="keyword">var</span> topic = packet.topic;</span><br><span class="line">    <span class="built_in">console</span>.log(packet.payload);</span><br><span class="line">    <span class="comment">// 前端启动开始数据推送  频率</span></span><br><span class="line">    <span class="keyword">switch</span> (topic) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;lightState&#x27;</span>:</span><br><span class="line">            <span class="comment">//硬件 灯控制</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;lightState&#x27;</span>, packet.payload.toString());</span><br><span class="line">            client1.publish(<span class="string">&#x27;isLight&#x27;</span>, <span class="built_in">JSON</span>.stringify(<span class="literal">false</span>), &#123; <span class="attr">qos</span>: <span class="number">0</span>, <span class="attr">retain</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;runState&#x27;</span>:</span><br><span class="line">            <span class="comment">// 设备状态改变 同步</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;runState&#x27;</span>,<span class="built_in">JSON</span>.parse(packet.payload));</span><br><span class="line">            client1.publish(<span class="string">&#x27;isRun&#x27;</span>, <span class="string">`[<span class="subst">$&#123;state1&#125;</span>,<span class="subst">$&#123;state2&#125;</span>]`</span>, &#123; <span class="attr">qos</span>: <span class="number">0</span>, <span class="attr">retain</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="订阅端"><a href="#订阅端" class="headerlink" title="订阅端"></a>订阅端</h4><blockquote>
+<p>Node</p>
+<blockquote>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">client</span>  = mqtt.connect(<span class="string">&#x27;mqtt://127.0.0.1:1883&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>前端</strong></p>
+<blockquote>
+</blockquote>
+<blockquote>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mqtt = require(<span class="string">&#x27;mqtt&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">client</span> = mqtt.connect(<span class="string">&#x27;ws://127.0.0.1:1884&#x27;</span>, &#123;</span><br><span class="line">      username: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">      password: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">      connectTimeout: <span class="number">4000</span>,</span><br><span class="line">      reconnectPeriod: <span class="number">0</span>,</span><br><span class="line">      clientId: <span class="string">&#x27;Demo_vue&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>挂载全局</p>
+</blockquote>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">import Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">Vue.prototype.$<span class="keyword">client</span> = <span class="keyword">client</span></span><br></pre></td></tr></table></figure>
+
+</blockquote>
+<p><strong>subscribe() 订阅主题</strong></p>
+<p><strong>publish() 消息发布</strong></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.$client.on(<span class="string">&#x27;connect&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.$client.subscribe([<span class="string">&#x27;lightState&#x27;</span>，<span class="string">&#x27;runState&#x27;</span>])</span><br><span class="line">  <span class="built_in">this</span>.$client.publish(<span class="string">&#x27;State1&#x27;</span>, <span class="string">&#x27;AT*GPO=1,0#&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">this</span>.$client.on(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">topic, message</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">switch</span> (topic) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;isRun&#x27;</span>:</span><br><span class="line">          <span class="comment">// console.log(&#x27;subMqtt -&gt; message -&gt; isRun&#x27;, JSON.parse(message))</span></span><br><span class="line">         <span class="keyword">break</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>MQTT</tag>
+        <tag>WebSocket</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node MySQL配置及登录注册接口实例</title>
+    <url>/2021/01/30/node/Node-MySQL/</url>
+    <content><![CDATA[<h4 id="安装MySQL依赖"><a href="#安装MySQL依赖" class="headerlink" title="安装MySQL依赖"></a>安装MySQL依赖</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
+</blockquote>
+<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="login-js"><a href="#login-js" class="headerlink" title="login.js"></a>login.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;login -&gt; param&quot;</span>, param)</span><br><span class="line">    <span class="keyword">let</span> username = param.username;</span><br><span class="line">    <span class="keyword">let</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查询数据库中是否有用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有用户名，查询密码是否相同</span></span><br><span class="line">                <span class="keyword">if</span>(password == results[<span class="number">0</span>].password)&#123;</span><br><span class="line">                    <span class="comment">//3、密码相同则登陆成功</span></span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;登陆成功&#x27;</span>,<span class="number">200</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，密码错误&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                    res.send(response);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，没有此用户名&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;登陆失败，用户名或密码不能为空&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = login;</span><br></pre></td></tr></table></figure>
+<h4 id="register-js"><a href="#register-js" class="headerlink" title="register.js"></a>register.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> connection =<span class="built_in">require</span>(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Response = <span class="built_in">require</span>(<span class="string">&#x27;./response&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> param = req.body;</span><br><span class="line">    <span class="keyword">const</span> username = param.username;</span><br><span class="line">    <span class="keyword">const</span> password = md5(param.password);</span><br><span class="line">    <span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(username &amp;&amp; password)&#123;</span><br><span class="line">        <span class="comment">//1、查看数据库中是否有相同用户名</span></span><br><span class="line">        connection.query(<span class="string">&quot;SELECT * FROM USER WHERE username = ?&quot;</span>,[username], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span>(results.length &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//2、如果有相同用户名，则注册失败，用户名重复</span></span><br><span class="line">                response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名重复&#x27;</span>,<span class="number">422</span>);</span><br><span class="line">                res.send(response);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(<span class="string">&quot;INSERT INTO user(username,password) VALUES(?,?)&quot;</span>, [username,password],<span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">                    <span class="comment">//3、如果没有相同用户名，并且有一条记录，则注册成功</span></span><br><span class="line">                    <span class="keyword">if</span>(results.affectedRows==<span class="number">1</span>)&#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">true</span>,<span class="string">&#x27;注册成功&#x27;</span>,<span class="number">201</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败&#x27;</span>,<span class="number">400</span>);</span><br><span class="line">                        res.send(response);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        response = <span class="keyword">new</span> Response(<span class="literal">false</span>,<span class="string">&#x27;注册失败，用户名、密码不能为空&#x27;</span>,-<span class="number">1</span>);</span><br><span class="line">        res.send(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = register;</span><br></pre></td></tr></table></figure>
+<h4 id="response-js-封装"><a href="#response-js-封装" class="headerlink" title="response.js 封装"></a>response.js 封装</h4><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(success,msg,code,result)&#123;</span><br><span class="line">       <span class="keyword">this</span>.success = success;</span><br><span class="line">       <span class="keyword">this</span>.msg = msg;</span><br><span class="line">       <span class="keyword">this</span>.code = code;</span><br><span class="line">       <span class="keyword">this</span>.result = result;</span><br><span class="line">       <span class="keyword">this</span>.<span class="keyword">data</span>=<span class="string">&#x27;666&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Response;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node-Note</title>
+    <url>/2021/02/02/node/Node-Note/</url>
+    <content><![CDATA[<h4 id="fs-writeFile"><a href="#fs-writeFile" class="headerlink" title="fs.writeFile()"></a>fs.writeFile()</h4><blockquote>
+<p>路径为项目根目录开始</p>
+<p><code>../</code>会导致 <code>相对路径</code>变成 <code>系统盘开始的绝对路径</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">&#x27;src/forumlist.json&#x27;</span>,</span><br><span class="line">    <span class="built_in">JSON</span>.stringify(forumlist, <span class="string">&quot;&quot;</span>, <span class="string">&quot;\t&quot;</span>),</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify()"></a>JSON.stringify()</h4><blockquote>
+<p>VSC配合插件 JSON的美化输出</p>
+</blockquote>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">JSON</span>.</span></span>stringify(forumlist, <span class="string">&quot;&quot;</span>, <span class="string">&quot;\t&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node 实用Tools</title>
+    <url>/2021/02/02/node/Node-Tools/</url>
+    <content><![CDATA[<h4 id="PM2-进程管理"><a href="#PM2-进程管理" class="headerlink" title="PM2  进程管理"></a><a href="https://github.com/Unitech/pm2">PM2 </a> 进程管理</h4><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">npm</span> install pm<span class="number">2</span> -g</span><br></pre></td></tr></table></figure>
+<p><strong>常用命令</strong></p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">pm2 start app.js</span><br><span class="line">pm2 list</span><br><span class="line">$ pm2 stop     &lt;app_name|<span class="keyword">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br><span class="line">$ <span class="symbol">pm2</span> <span class="symbol">restart</span>  &lt;<span class="symbol">app_name</span>|<span class="symbol">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br><span class="line">$ <span class="symbol">pm2</span> <span class="symbol">delete</span>   &lt;<span class="symbol">app_name</span>|<span class="symbol">namespace</span>|<span class="symbol">id</span>|&#x27;<span class="symbol">all</span>&#x27;|<span class="symbol">json_conf</span>&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Nodemon-热更新"><a href="#Nodemon-热更新" class="headerlink" title="Nodemon 热更新"></a><a href="https://github.com/remy/nodemon">Nodemon</a> 热更新</h4><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g nodemon</span><br><span class="line">npm <span class="keyword">install</span> --save-dev nodemon</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nodemon</span> <span class="selector-tag">app</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>PM2</tag>
+        <tag>Nodemon</tag>
       </tags>
   </entry>
   <entry>
