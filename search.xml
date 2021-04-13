@@ -992,4 +992,24 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>小程序右上角分享</title>
+    <url>/2021/04/13/uni/wx-share/</url>
+    <content><![CDATA[<p><strong>注意</strong></p>
+<p>只能写在page页面</p>
+<p>开启后小程序右上角即可 <strong>分享到朋友圈</strong> <strong>发送给朋友</strong></p>
+<p><strong>组件内使用无效</strong>  </p>
+<p>只在<strong>微信高版本支持</strong>!!!  低版本微信用户朋友圈分享是无法打开的</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.showShareMenu.html">官方文档</a></p>
+<p>注意uniapp兼容编译  </p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">onLoad() &#123;</span><br><span class="line">	<span class="regexp">//</span><span class="comment">#ifdef MP-WEIXIN</span></span><br><span class="line">	wx.showShareMenu(&#123;</span><br><span class="line">		withShareTicket: true,</span><br><span class="line">		<span class="regexp">//</span>设置下方的Menus菜单，才能够让发送给朋友与分享到朋友圈两个按钮可以点击</span><br><span class="line">		menus: [<span class="string">&quot;shareAppMessage&quot;</span>, <span class="string">&quot;shareTimeline&quot;</span>]</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="regexp">//</span><span class="comment">#endif</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>uniapp</tag>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
 </search>
