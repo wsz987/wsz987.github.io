@@ -532,14 +532,14 @@
   </entry>
   <entry>
     <title>Node Cheerio-Superagent keylol论坛数据抓取</title>
-    <url>/2021/02/04/node/Node-Cheerio/</url>
+    <url>/2021/02/05/node/Node-Cheerio/</url>
     <content><![CDATA[<blockquote>
 <p>数据抓取基于 <a href="https://keylol.com/forum.php?m=index&mobile=2">keylol 移动端</a> 页面   </p>
 <p><strong>不涉及任何权限帖子 &amp; 版块内容</strong>  单纯列表抓取 不抓取任何帖子内容 – 其实我不会φ(*￣0￣) 守株待兔逮个大佬</p>
 <blockquote>
 <p>接口基于对应请求 <strong>一对一页面抓取</strong>  不会对论坛服务器照成负载  <strong>但请不要 频繁 &amp; ‘’过分’’ 请求造成 论坛502</strong></p>
 </blockquote>
-<p><strong>此仓仅供学习</strong> 意在提供现成API辅助前端开发 – 实际Node小白 这接口顶多做个列表数据渲染</p>
+<p><strong>此仓仅供学习</strong>  – 实际Node小白 这接口顶多做个列表数据渲染</p>
 <p>请勿恶意使用 如有侵权   请联系论坛ID: wsz987 – Github这边不常看</p>
 <p>♥ GAY坛    <a href="https://github.com/wsz987/KeylolDataAPI">Github</a></p>
 </blockquote>
@@ -943,6 +943,70 @@
       <tags>
         <tag>STEAM</tag>
         <tag>API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>keylol-API-Info</title>
+    <url>/2021/02/04/api/keylol-API-Info/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="08dc0de33f3b5684f365c62716f351ee605f17d196840bf283d56dfdb2a64d30">0e3318570b0e2807598a047fa52a53bce3046cc35ba3c583bb7908ef2b65196e587daaeef884362042fe23a8fa67f55f243af8acdd714658082e62f5802014358a6e0741ea1311c2fbf79c58865a89149c524abb8c0995dc62331ae7e312b3e38541ff35c055531f3d75858cbea1d63e64d2cf3ea4dbecdfc8558884219502db1cb60f6558d68b2b3fbb43b819e4197728ba60d8f66d0cdc92ea645653b5b5dfd40d038c2ca68684c983175b69b12537344d14cf36c1f580c6585dbcb7d968d4b3fcecdde78e6278a8b0c75b0ee10e7e425366548d77487949f07f09ab35e80670e13c64672ed2cc9630891ee5f4903299b663a734575b372009369faeee3d9733187d18fae917d05267b55b4fb9feee493102644fca7239727e9f0683f05923436024d06d1678d5d8a38fca5e06a4344073f6e14426b81de1c17085dd108bd14c7abe6f6c2c768b5c8bc60b680b4bab4e6b4cda65843ac8fd0b2455d2a05f7263dcebf7e86bc9795cbe40b93a78383027036c2deeade88056e364d701efcae14a465d997e8dd9d7fc9f76148ce3ec823a2482235cdd106f2627dae67603fca2c18e32bac49bbbdff63f59dfde6be901a1d6af6acb1179f404bbdfe5e54a02df009d04a47c196d2f73db57c7318a317fe4e2e7e5fe53380a6b4a9f5b903b695c5e510c7524d02416a03793a824fc12c8ebd753117772509e315eb8596cabc53aaf57cb8eddce802ada3796fcf7415318c515569e1e86092fe606a1d95a8819441498778a2d495eb0f88d27e67712e81d330c05d763660bef862b2645b804d0d9f278aa426205139ae97bc52f99bb2a39</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>keylol</category>
+      </categories>
+      <tags>
+        <tag>keylol</tag>
+        <tag>API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Object.defineProperty() 数据监听</title>
+    <url>/2021/04/13/JavaScript/Object_defineProperty/</url>
+    <content><![CDATA[<p><strong>注意</strong></p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">_<span class="built_in">count</span> === <span class="built_in">count</span></span><br></pre></td></tr></table></figure>
+<p>因为已经对 ``count<code> </code>监听</p>
+<p><code>setter</code> 不可直接对<code>count</code> 赋值 会陷入死循环 set</p>
+<p> <code>getter </code> return 同理也不能 包括<code>return this;</code>  </p>
+<p>使用 <code>_count</code>  可以达到赋值效果</p>
+<p><code>Object.keys()</code> 打印 <code>initData</code> 只打印实例 即 <code>_</code>开头键值</p>
+<p>vue3 使用 <code>Proxy()</code>  来解决数组监听等问题</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> initData= <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._count= GM_getValue(<span class="string">&quot;count&quot;</span>) || <span class="number">300</span></span><br><span class="line">        <span class="built_in">this</span>._slow= GM_getValue(<span class="string">&quot;slow&quot;</span>) || <span class="number">0.7</span></span><br><span class="line">        <span class="built_in">this</span>._fast= GM_getValue(<span class="string">&quot;fast&quot;</span>) || <span class="number">0.75</span></span><br><span class="line">        <span class="built_in">this</span>._timeout= GM_getValue(<span class="string">&quot;timeout&quot;</span>) || <span class="number">3</span></span><br><span class="line">        <span class="built_in">this</span>._check= GM_getValue(<span class="string">&quot;check&quot;</span>) || <span class="number">2</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;diaoy&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> initData)&#123;</span><br><span class="line">        key=key.slice(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(initData,<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,&#123;</span><br><span class="line">            <span class="function"><span class="title">set</span>(<span class="params">newVal</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`setter <span class="subst">$&#123;key&#125;</span>: `</span>,newVal)</span><br><span class="line">                GM_setValue(<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,newVal-<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]=newVal-<span class="string">&#x27;&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`getter <span class="subst">$&#123;key&#125;</span>: `</span>,<span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">&#123;_coun<span class="variable">t:</span> <span class="number">202</span>, _slo<span class="variable">w:</span> <span class="number">0.71</span>, _fas<span class="variable">t:</span> <span class="number">0.75</span>, _timeou<span class="variable">t:</span> <span class="number">3</span>, _check: <span class="number">2</span>, …&#125;</span><br><span class="line">_check: <span class="number">2</span></span><br><span class="line">_coun<span class="variable">t:</span> <span class="number">202</span></span><br><span class="line">_fas<span class="variable">t:</span> <span class="number">0.75</span></span><br><span class="line">_slo<span class="variable">w:</span> <span class="number">0.71</span></span><br><span class="line">_timeou<span class="variable">t:</span> <span class="number">3</span></span><br><span class="line">check: (...)</span><br><span class="line">coun<span class="variable">t:</span> (...)</span><br><span class="line">fas<span class="variable">t:</span> (...)</span><br><span class="line">slo<span class="variable">w:</span> (...)</span><br><span class="line">timeou<span class="variable">t:</span> (...)</span><br><span class="line"><span class="built_in">get</span> check: ƒ ()</span><br><span class="line"><span class="keyword">set</span> check: ƒ <span class="keyword">set</span>(newVal)</span><br><span class="line"><span class="built_in">get</span> coun<span class="variable">t:</span> ƒ ()</span><br><span class="line"><span class="keyword">set</span> coun<span class="variable">t:</span> ƒ <span class="keyword">set</span>(newVal)</span><br><span class="line"><span class="built_in">get</span> fas<span class="variable">t:</span> ƒ ()</span><br><span class="line"><span class="keyword">set</span> fas<span class="variable">t:</span> ƒ <span class="keyword">set</span>(newVal)</span><br><span class="line"><span class="built_in">get</span> slo<span class="variable">w:</span> ƒ ()</span><br><span class="line"><span class="keyword">set</span> slo<span class="variable">w:</span> ƒ <span class="keyword">set</span>(newVal)</span><br><span class="line"><span class="built_in">get</span> timeou<span class="variable">t:</span> ƒ ()</span><br><span class="line"><span class="keyword">set</span> timeou<span class="variable">t:</span> ƒ <span class="keyword">set</span>(newVal)</span><br><span class="line">__proto__: Object</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Object.defineProperty()</title>
+    <url>/2021/04/13/JavaScript/post/</url>
+    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> initData= <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._count= GM_getValue(<span class="string">&quot;count&quot;</span>) || <span class="number">300</span></span><br><span class="line">        <span class="built_in">this</span>._slow= GM_getValue(<span class="string">&quot;slow&quot;</span>) || <span class="number">0.7</span></span><br><span class="line">        <span class="built_in">this</span>._fast= GM_getValue(<span class="string">&quot;fast&quot;</span>) || <span class="number">0.75</span></span><br><span class="line">        <span class="built_in">this</span>._timeout= GM_getValue(<span class="string">&quot;timeout&quot;</span>) || <span class="number">3</span></span><br><span class="line">        <span class="built_in">this</span>._check= GM_getValue(<span class="string">&quot;check&quot;</span>) || <span class="number">2</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;diaoy&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> initData)&#123;</span><br><span class="line">        key=key.slice(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(initData,<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,&#123;</span><br><span class="line">            <span class="function"><span class="title">set</span>(<span class="params">newVal</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`setter <span class="subst">$&#123;key&#125;</span>: `</span>,newVal)</span><br><span class="line">                GM_setValue(<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,newVal-<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]=newVal-<span class="string">&#x27;&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`getter <span class="subst">$&#123;key&#125;</span>: `</span>,<span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Object.defineProperty() 数据监听</title>
+    <url>/2021/04/13/JavaScript/Object_efineProperty/</url>
+    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> initData= <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._count= GM_getValue(<span class="string">&quot;count&quot;</span>) || <span class="number">300</span></span><br><span class="line">        <span class="built_in">this</span>._slow= GM_getValue(<span class="string">&quot;slow&quot;</span>) || <span class="number">0.7</span></span><br><span class="line">        <span class="built_in">this</span>._fast= GM_getValue(<span class="string">&quot;fast&quot;</span>) || <span class="number">0.75</span></span><br><span class="line">        <span class="built_in">this</span>._timeout= GM_getValue(<span class="string">&quot;timeout&quot;</span>) || <span class="number">3</span></span><br><span class="line">        <span class="built_in">this</span>._check= GM_getValue(<span class="string">&quot;check&quot;</span>) || <span class="number">2</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;diaoy&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> initData)&#123;</span><br><span class="line">        key=key.slice(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(initData,<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,&#123;</span><br><span class="line">            <span class="function"><span class="title">set</span>(<span class="params">newVal</span>)</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`setter <span class="subst">$&#123;key&#125;</span>: `</span>,newVal)</span><br><span class="line">                GM_setValue(<span class="string">`<span class="subst">$&#123;key&#125;</span>`</span>,newVal-<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]=newVal-<span class="string">&#x27;&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`getter <span class="subst">$&#123;key&#125;</span>: `</span>,<span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>[<span class="string">`_<span class="subst">$&#123;key&#125;</span>`</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(initData)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>

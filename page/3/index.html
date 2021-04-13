@@ -17,21 +17,6 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script>
-    (function () {
-        if ('') {
-            if (prompt('请输入文章密码') !== '') {
-                alert('密码错误！');
-                if (history.length === 1) {
-                    location.replace("/"); // 这里替换成你的首页
-                } else {
-                    history.back();
-                }
-            }
-        }
-    })();
-</script>
-
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wsz987.githyb.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
@@ -210,6 +195,374 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/node/Node-MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/node/Node-MySQL/" class="post-title-link" itemprop="url">Node MySQL配置及登录注册接口实例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 16:04:50 / 修改时间：16:45:48" itemprop="dateCreated datePublished" datetime="2021-01-30T16:04:50+08:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/30/node/Node-MySQL/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/30/node/Node-MySQL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="安装MySQL依赖"><a href="#安装MySQL依赖" class="headerlink" title="安装MySQL依赖"></a>安装MySQL依赖</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line">const <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host     : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span>     : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;workshop&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>()</span><br><span class="line">module.exports = <span class="keyword">connection</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>已知问题  MySQL 连接存在睡眠期 会断开连接</p>
+</blockquote>
+<h4 id="在需要的页面引用即可"><a href="#在需要的页面引用即可" class="headerlink" title="在需要的页面引用即可"></a>在需要的页面引用即可</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const connection</span> =require(<span class="string">&#x27;../sqlConfig&#x27;</span>);</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/30/node/Node-MySQL/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/node/Node-Allow-Origin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/node/Node-Allow-Origin/" class="post-title-link" itemprop="url">Node基础及跨域配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 15:52:23 / 修改时间：16:54:07" itemprop="dateCreated datePublished" datetime="2021-01-30T15:52:23+08:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index"><span itemprop="name">Node</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/30/node/Node-Allow-Origin/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/30/node/Node-Allow-Origin/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>)</span><br><span class="line"><span class="comment">// gzip压缩</span></span><br><span class="line"><span class="comment">// const compression = require(&#x27;compression&#x27;)</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(compression())</span><br><span class="line"><span class="comment">// 打包后项目</span></span><br><span class="line"><span class="comment">// app.use(express.static(&#x27;./dist&#x27;))</span></span><br><span class="line"></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">false</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/30/node/Node-Allow-Origin/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/script/SteamStoreToolsBtn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/script/SteamStoreToolsBtn/" class="post-title-link" itemprop="url">Steam商店便捷按钮脚本</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 15:05:27 / 修改时间：15:12:11" itemprop="dateCreated datePublished" datetime="2021-01-30T15:05:27+08:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/30/script/SteamStoreToolsBtn/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/30/script/SteamStoreToolsBtn/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>steam商店页面添加点数商店,市场和截图页面跳转按钮,</p>
+<blockquote>
+<p>steam页面/社区导航栏添加网页key激活跳转</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://keylol.com/t615154-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
+<p>脚本基于 <a target="_blank" rel="noopener" href="http://www.tampermonkey.net/">油猴</a>  <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/406317">下载</a></p>
+</blockquote>
+<h4 id="脚本可自行配置"><a href="#脚本可自行配置" class="headerlink" title="脚本可自行配置"></a>脚本可自行配置</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/30/script/SteamStoreToolsBtn/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/script/keylol-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.jpg">
+      <meta itemprop="name" content="wsz987">
+      <meta itemprop="description" content="Hello,here is wsz987's blog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsz987">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/30/script/keylol-tools/" class="post-title-link" itemprop="url">Keylol有卡/中文/包类游戏标记脚本</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 14:46:36 / 修改时间：15:11:48" itemprop="dateCreated datePublished" datetime="2021-01-30T14:46:36+08:00">2021-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/30/script/keylol-tools/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/30/script/keylol-tools/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Keylol论坛自动检索帖子内容 </p>
+<blockquote>
+<p>并标记有卡/中文游戏 自定义面板 嗨皮喜加一 包类标记 帖子游戏链接转化游戏名等</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://keylol.com/t587145-1-1">脚本发布并作用于keylol论坛 / 反馈</a></p>
+<p>脚本基于 <a target="_blank" rel="noopener" href="http://www.tampermonkey.net/">油猴</a>  <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/401805">下载</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wsz987.githyb.io/2021/01/30/hexo/2Dlive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -235,7 +588,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-30 04:08:51 / 修改时间：05:27:59" itemprop="dateCreated datePublished" datetime="2021-01-30T04:08:51+00:00">2021-01-30</time>
+              <time title="创建时间：2021-01-30 12:08:51 / 修改时间：13:27:59" itemprop="dateCreated datePublished" datetime="2021-01-30T12:08:51+08:00">2021-01-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,7 +682,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-29 10:18:26 / 修改时间：15:23:16" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
+              <time title="创建时间：2021-01-29 18:18:26 / 修改时间：23:23:16" itemprop="dateCreated datePublished" datetime="2021-01-29T18:18:26+08:00">2021-01-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -427,14 +780,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-29 10:18:26" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
+              <time title="创建时间：2021-01-29 18:18:26" itemprop="dateCreated datePublished" datetime="2021-01-29T18:18:26+08:00">2021-01-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-30 04:48:11" itemprop="dateModified" datetime="2021-01-30T04:48:11+00:00">2021-01-30</time>
+                <time title="修改时间：2021-01-30 12:48:11" itemprop="dateModified" datetime="2021-01-30T12:48:11+08:00">2021-01-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -524,7 +877,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-29 10:18:26 / 修改时间：13:13:25" itemprop="dateCreated datePublished" datetime="2021-01-29T10:18:26+00:00">2021-01-29</time>
+              <time title="创建时间：2021-01-29 18:18:26 / 修改时间：21:13:25" itemprop="dateCreated datePublished" datetime="2021-01-29T18:18:26+08:00">2021-01-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -624,14 +977,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-29 06:22:58" itemprop="dateCreated datePublished" datetime="2021-01-29T06:22:58+00:00">2021-01-29</time>
+              <time title="创建时间：2021-01-29 14:22:58" itemprop="dateCreated datePublished" datetime="2021-01-29T14:22:58+08:00">2021-01-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-31 15:18:02" itemprop="dateModified" datetime="2021-01-31T15:18:02+00:00">2021-01-31</time>
+                <time title="修改时间：2021-01-31 23:18:02" itemprop="dateModified" datetime="2021-01-31T23:18:02+08:00">2021-01-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -743,7 +1096,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-29 01:37:35 / 修改时间：08:36:20" itemprop="dateCreated datePublished" datetime="2021-01-29T01:37:35+00:00">2021-01-29</time>
+              <time title="创建时间：2021-01-29 09:37:35 / 修改时间：16:36:20" itemprop="dateCreated datePublished" datetime="2021-01-29T09:37:35+08:00">2021-01-29</time>
             </span>
 
           
@@ -865,14 +1218,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
